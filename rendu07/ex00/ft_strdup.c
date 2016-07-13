@@ -6,7 +6,7 @@
 /*   By: lmeyer <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/07/13 18:20:42 by lmeyer            #+#    #+#             */
-/*   Updated: 2016/07/13 20:10:58 by lmeyer           ###   ########.fr       */
+/*   Updated: 2016/07/13 23:40:05 by lmeyer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,5 +41,7 @@ char	*ft_strcpy(char *dest, char *src)
 
 char	*ft_strdup(char *src)
 {
-	return (ft_strcpy(malloc(ft_strlen(src) + 1), src));
+	if (src == NULL)
+		return 0;
+	return (ft_strcpy((char *)malloc(ft_strlen(src) + 1), src));
 }
