@@ -6,7 +6,7 @@
 /*   By: lmeyer <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/07/12 19:26:56 by lmeyer            #+#    #+#             */
-/*   Updated: 2016/07/13 16:05:53 by lmeyer           ###   ########.fr       */
+/*   Updated: 2016/07/13 17:58:17 by lmeyer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,18 +39,18 @@ int		main(void)
 	printf("after swap   : %d\n", nb1);
 	printf("\n*** Test ft_putchar ***\n");
 	printf("should output: %c\n", '9');
-	printf("    my output: ");
+	ft_putstr("    my output: ");
 	ft_putchar('9');
 	ft_putchar('\n');
 	printf("\n*** Test ft_putstr ***\n");
 	s1 = "resultat";
 	printf("should output: %s\n", s1);
-	printf("    my output: ");
+	ft_putstr("    my output: ");
 	ft_putstr(s1);
 	ft_putchar('\n');
 	printf("\n*** Test ft_strlen ***\n");
 	s1 = "coucou";
-	printf("should output: 7");
+	printf("should output: 7\n");
 	printf("    my output: %d\n", ft_strlen(s1));
 	printf("\n*** Test ft_strcmp ***\n");
 	s1 = "coucou";
