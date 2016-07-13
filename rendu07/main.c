@@ -1,45 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strdup.c                                        :+:      :+:    :+:   */
+/*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lmeyer <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/07/13 18:20:42 by lmeyer            #+#    #+#             */
-/*   Updated: 2016/07/13 20:10:58 by lmeyer           ###   ########.fr       */
+/*   Created: 2016/07/13 19:12:41 by lmeyer            #+#    #+#             */
+/*   Updated: 2016/07/13 20:20:02 by lmeyer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
+void	ft_putstr(char *str);
+char	*ft_strdup(char *src);
 
-int		ft_strlen(char *str)
+int		main(void)
 {
-	int i;
+	char str[] = "Pif paf pouf";
 
-	i = 0;
-	while (*str != 0)
-	{
-		i++;
-		str++;
-	}
-	return (i);
-}
-
-char	*ft_strcpy(char *dest, char *src)
-{
-	int		i;
-
-	i = 0;
-	while (src[i] != '\0')
-	{
-		dest[i] = src[i];
-		i++;
-	}
-	dest[i] = '\0';
-	return (dest);
-}
-
-char	*ft_strdup(char *src)
-{
-	return (ft_strcpy(malloc(ft_strlen(src) + 1), src));
+	ft_putstr("### EXERCICE 1 ###\n");
+	ft_putstr("\nSource string      = ");
+	ft_putstr(str);
+	ft_putstr("\nDestination string = ");
+	ft_putstr(ft_strdup(str));
+	ft_putstr("\n\n");
+	return (0);
 }
