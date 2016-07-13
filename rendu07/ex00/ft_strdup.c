@@ -1,36 +1,45 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_print_params.c                                  :+:      :+:    :+:   */
+/*   ft_strdup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lmeyer <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/07/13 16:36:11 by lmeyer            #+#    #+#             */
-/*   Updated: 2016/07/13 18:10:14 by lmeyer           ###   ########.fr       */
+/*   Created: 2016/07/13 18:20:42 by lmeyer            #+#    #+#             */
+/*   Updated: 2016/07/13 19:04:41 by lmeyer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-void	ft_putchar(char c);
+void	*malloc(size_t size);
 
-void	ft_putstr(char *str)
-{
-	if (*str != 0)
-	{
-		ft_putchar(*str);
-		ft_putstr(str + 1);
-	}
-	return ;
-}
-
-int		main(int argc, char **argv)
+int		ft_strlen(char *str)
 {
 	int i;
 
-	i = 1;
-	while (i < argc)
+	i = 0;
+	while (*str != 0)
 	{
-		ft_putstr(argv[i]);
-		ft_putchar('\n');
+		i++;
+		str++;
+	}
+	return (i);
+}
+
+char	*ft_strcpy(char *dest, char *src)
+{
+	int		i;
+
+	i = 0;
+	while (src[i] != '\0')
+	{
+		dest[i] = src[i];
 		i++;
 	}
+	dest[i] = '\0';
+	return (dest);
+}
+
+char	*ft_strdup(char *src)
+{
+	return (ft_strcpy(malloc(ft_strlen(src)), src));
 }

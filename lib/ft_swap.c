@@ -1,36 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_print_params.c                                  :+:      :+:    :+:   */
+/*   ft_swap.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lmeyer <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/07/13 16:36:11 by lmeyer            #+#    #+#             */
-/*   Updated: 2016/07/13 18:10:14 by lmeyer           ###   ########.fr       */
+/*   Created: 2016/07/12 19:42:58 by lmeyer            #+#    #+#             */
+/*   Updated: 2016/07/12 19:46:25 by lmeyer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-void	ft_putchar(char c);
-
-void	ft_putstr(char *str)
+void	ft_swap(int *a, int *b)
 {
-	if (*str != 0)
-	{
-		ft_putchar(*str);
-		ft_putstr(str + 1);
-	}
+	int c;
+
+	c = *a;
+	*a = *b;
+	*b = c;
 	return ;
-}
-
-int		main(int argc, char **argv)
-{
-	int i;
-
-	i = 1;
-	while (i < argc)
-	{
-		ft_putstr(argv[i]);
-		ft_putchar('\n');
-		i++;
-	}
 }

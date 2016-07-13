@@ -1,36 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_print_params.c                                  :+:      :+:    :+:   */
+/*   ft_strupcase.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lmeyer <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/07/13 16:36:11 by lmeyer            #+#    #+#             */
-/*   Updated: 2016/07/13 18:10:14 by lmeyer           ###   ########.fr       */
+/*   Created: 2016/07/12 19:13:23 by lmeyer            #+#    #+#             */
+/*   Updated: 2016/07/12 19:21:40 by lmeyer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-void	ft_putchar(char c);
-
-void	ft_putstr(char *str)
-{
-	if (*str != 0)
-	{
-		ft_putchar(*str);
-		ft_putstr(str + 1);
-	}
-	return ;
-}
-
-int		main(int argc, char **argv)
+char	*ft_strupcase(char *str)
 {
 	int i;
 
-	i = 1;
-	while (i < argc)
+	i = 0;
+	while (str[i] != '\0')
 	{
-		ft_putstr(argv[i]);
-		ft_putchar('\n');
+		if (str[i] >= 'a' && str[i] <= 'z')
+			str[i] = str[i] - 'a' + 'A';
 		i++;
 	}
+	return (str);
 }

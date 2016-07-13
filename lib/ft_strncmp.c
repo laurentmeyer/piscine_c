@@ -1,36 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_print_params.c                                  :+:      :+:    :+:   */
+/*   ft_strncmp.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lmeyer <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/07/13 16:36:11 by lmeyer            #+#    #+#             */
-/*   Updated: 2016/07/13 18:10:14 by lmeyer           ###   ########.fr       */
+/*   Created: 2016/07/12 18:56:32 by lmeyer            #+#    #+#             */
+/*   Updated: 2016/07/12 19:13:00 by lmeyer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-void	ft_putchar(char c);
-
-void	ft_putstr(char *str)
+int		ft_strncmp(char *s1, char *s2, unsigned int n)
 {
-	if (*str != 0)
-	{
-		ft_putchar(*str);
-		ft_putstr(str + 1);
-	}
-	return ;
-}
+	unsigned int i;
 
-int		main(int argc, char **argv)
-{
-	int i;
-
-	i = 1;
-	while (i < argc)
+	i = 0;
+	while (i < n - 1 && s1[i] == s2[i])
 	{
-		ft_putstr(argv[i]);
-		ft_putchar('\n');
+		if (s1[i] == '\0')
+			return (0);
 		i++;
 	}
+	return (s1[i] - s2[i]);
 }

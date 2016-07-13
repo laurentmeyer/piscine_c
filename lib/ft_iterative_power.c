@@ -1,36 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_print_params.c                                  :+:      :+:    :+:   */
+/*   ft_iterative_power.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lmeyer <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/07/13 16:36:11 by lmeyer            #+#    #+#             */
-/*   Updated: 2016/07/13 18:10:14 by lmeyer           ###   ########.fr       */
+/*   Created: 2016/07/08 15:46:45 by lmeyer            #+#    #+#             */
+/*   Updated: 2016/07/08 15:47:01 by lmeyer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-void	ft_putchar(char c);
-
-void	ft_putstr(char *str)
-{
-	if (*str != 0)
-	{
-		ft_putchar(*str);
-		ft_putstr(str + 1);
-	}
-	return ;
-}
-
-int		main(int argc, char **argv)
+int		ft_iterative_power(int nb, int power)
 {
 	int i;
+	int acc;
 
-	i = 1;
-	while (i < argc)
+	i = 0;
+	acc = 1;
+	if (power < 0)
+		return (0);
+	while (i < power)
 	{
-		ft_putstr(argv[i]);
-		ft_putchar('\n');
+		acc = acc * nb;
 		i++;
 	}
+	return (acc);
 }

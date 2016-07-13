@@ -1,36 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_print_params.c                                  :+:      :+:    :+:   */
+/*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lmeyer <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/07/13 16:36:11 by lmeyer            #+#    #+#             */
-/*   Updated: 2016/07/13 18:10:14 by lmeyer           ###   ########.fr       */
+/*   Created: 2016/07/11 12:42:28 by lmeyer            #+#    #+#             */
+/*   Updated: 2016/07/12 09:08:17 by lmeyer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 void	ft_putchar(char c);
 
-void	ft_putstr(char *str)
+int		ft_atoi(char *str)
 {
-	if (*str != 0)
-	{
-		ft_putchar(*str);
-		ft_putstr(str + 1);
-	}
-	return ;
-}
+	int		i;
+	int		sign;
+	int		acc;
 
-int		main(int argc, char **argv)
-{
-	int i;
-
-	i = 1;
-	while (i < argc)
+	i = 0;
+	sign = 1;
+	acc = 0;
+	while (str[i] == ' ' || (str[i] >= 7 && str[i] <= 13))
+		i++;
+	if (str[i] == '+')
+		i++;
+	if (str[i] == '-')
 	{
-		ft_putstr(argv[i]);
-		ft_putchar('\n');
+		sign = -1;
 		i++;
 	}
+	while (str[i] >= '0' && str[i] <= '9' && str[i] != '\0')
+	{
+		acc = 10 * acc - (str[i] - '0');
+		i++;
+	}
+	return (-sign * acc);
 }
