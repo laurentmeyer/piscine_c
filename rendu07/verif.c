@@ -6,7 +6,7 @@
 /*   By: lmeyer <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/07/13 19:12:41 by lmeyer            #+#    #+#             */
-/*   Updated: 2016/07/14 16:05:24 by lmeyer           ###   ########.fr       */
+/*   Updated: 2016/07/14 10:53:35 by lmeyer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include <stdio.h>
@@ -18,9 +18,7 @@ void	ft_putnbr(int nb);
 int		*ft_range(int min, int max);
 int		ft_ultimate_range(int **range, int min, int max);
 char	*ft_concat_params(int argc, char **argv);
-char	*ft_strcat(char *stra, char *strb);
 
-	
 int		main(int argc, char **argv)
 {
 	char	str[] = "Pif paf pouf";
@@ -99,12 +97,8 @@ int		main(int argc, char **argv)
 	ft_putnbr(ft_ultimate_range(doubleptr, 0, 5) == 0);
 
 
-	ft_putstr("\n\n### EXERCICE 4 ###\n\n");
-	ft_putstr("\nTest with some params and without params\n");
-	ft_strcat("coucou ", "c'est nous");
-	ft_putstr(ft_concat_params(argc, argv));
-	argc = 0;
-	argv = 0;
-	ft_putstr("##### END #####\n");
+
+	i = (argc == 0);
+	i = (argv == 0);
 	return (0);
 }

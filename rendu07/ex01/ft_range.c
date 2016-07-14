@@ -6,28 +6,26 @@
 /*   By: lmeyer <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/07/13 21:34:18 by lmeyer            #+#    #+#             */
-/*   Updated: 2016/07/13 22:41:22 by lmeyer           ###   ########.fr       */
+/*   Updated: 2016/07/14 11:28:34 by lmeyer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
 
-void	ft_putstr(char *str);
-void	ft_putnbr(int i);
-
 int		*ft_range(int min, int max)
 {
 	int i;
 	int	diff;
-	int *start;	
+	int *start;
 
 	diff = max - min;
 	if (diff <= 0)
 		return (0);
-	start =	(int *)malloc(diff);
+	start = (int *)malloc(4 * diff);
+	i = 0;
 	while (i < diff)
 	{
-		*(start + 4 * i) = min + i;
+		*(start + i) = min + i;
 		i++;
 	}
 	return (start);

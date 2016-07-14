@@ -1,47 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strdup.c                                        :+:      :+:    :+:   */
+/*   ft_range.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lmeyer <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/07/13 18:20:42 by lmeyer            #+#    #+#             */
-/*   Updated: 2016/07/14 10:57:39 by lmeyer           ###   ########.fr       */
+/*   Created: 2016/07/13 21:34:18 by lmeyer            #+#    #+#             */
+/*   Updated: 2016/07/14 11:28:28 by lmeyer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
 
-int		ft_strlen(char *str)
+int		*ft_range(int min, int max)
 {
 	int i;
+	int	diff;
+	int *start;
 
-	i = 0;
-	while (*str != 0)
-	{
-		i++;
-		str++;
-	}
-	return (i);
-}
-
-char	*ft_strcpy(char *dest, char *src)
-{
-	int		i;
-
-	i = 0;
-	while (src[i] != '\0')
-	{
-		dest[i] = src[i];
-		i++;
-	}
-	dest[i] = '\0';
-	return (dest);
-}
-
-char	*ft_strdup(char *src)
-{
-	if (src == NULL)
+	diff = max - min;
+	if (diff <= 0)
 		return (0);
-	return (ft_strcpy((char *)malloc(ft_strlen(src) + 1), src));
+	start = (int *)malloc(4 * diff);
+	i = 0;
+	while (i < diff)
+	{
+		*(start + i) = min + i;
+		i++;
+	}
+	return (start);
 }

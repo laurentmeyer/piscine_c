@@ -1,47 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strdup.c                                        :+:      :+:    :+:   */
+/*   ft_concat_params.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lmeyer <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/07/13 18:20:42 by lmeyer            #+#    #+#             */
-/*   Updated: 2016/07/14 10:57:39 by lmeyer           ###   ########.fr       */
+/*   Created: 2016/07/14 09:28:41 by lmeyer            #+#    #+#             */
+/*   Updated: 2016/07/14 16:07:59 by lmeyer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
 
-int		ft_strlen(char *str)
-{
-	int i;
+int		ft_strlen(char *str);
+void	ft_putstr(char *str);
+char	*ft_strcpy(char *dest, char *src);
+char	*ft_strcat(char *stra, char *strb);
 
-	i = 0;
-	while (*str != 0)
-	{
-		i++;
-		str++;
-	}
-	return (i);
-}
-
-char	*ft_strcpy(char *dest, char *src)
+char	*ft_concat_params(int argc, char **argv)
 {
 	int		i;
+	char	*str;
 
-	i = 0;
-	while (src[i] != '\0')
+	if (argc <= 1 || argv == 0)
+		return (0);
+	str = argv[2];
+	i = 3;
+	while (i <= argc)
 	{
-		dest[i] = src[i];
+		str = ft_strcat(str, "\n");
+		str = ft_strcat(str, argv[i]);
 		i++;
 	}
-	dest[i] = '\0';
-	return (dest);
-}
-
-char	*ft_strdup(char *src)
-{
-	if (src == NULL)
-		return (0);
-	return (ft_strcpy((char *)malloc(ft_strlen(src) + 1), src));
+	return (str);
 }

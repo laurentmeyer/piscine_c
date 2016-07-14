@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strdup.c                                        :+:      :+:    :+:   */
+/*   ft_concat_params.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lmeyer <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/07/13 18:20:42 by lmeyer            #+#    #+#             */
-/*   Updated: 2016/07/14 10:57:39 by lmeyer           ###   ########.fr       */
+/*   Created: 2016/07/14 09:28:41 by lmeyer            #+#    #+#             */
+/*   Updated: 2016/07/14 11:57:40 by lmeyer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,9 +39,31 @@ char	*ft_strcpy(char *dest, char *src)
 	return (dest);
 }
 
-char	*ft_strdup(char *src)
+char	*ft_concat_params(int argc, char **argv)
 {
-	if (src == NULL)
+	int		i;
+	int		acc;
+	char	*str;
+
+	if (argc == 1)
 		return (0);
-	return (ft_strcpy((char *)malloc(ft_strlen(src) + 1), src));
+	i = 1;
+	while (i <= argc)
+	{
+		acc = acc + ft_strlen(argv[i]) + 1;
+		i++;
+	}
+	str = (char *)malloc(acc);
+	i = 1;
+	acc = 0;
+	while (i < argc)
+	{
+		ft_strcpy(str + acc, argv[i]);
+		*(str + acc + ft_strlen(argv[i]) + 1) = '\n';
+		i++;
+		acc = acc + ft_strlen(argv[i]) + 1;
+	}
+	ft_strcpy(str + acc, argv[i]);
+	*(str + acc + ft_strlen(argv[i]) + 1) = '\0';
+	return (str);
 }
