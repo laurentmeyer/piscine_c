@@ -6,14 +6,13 @@
 /*   By: lmeyer <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/07/14 09:28:41 by lmeyer            #+#    #+#             */
-/*   Updated: 2016/07/14 16:07:59 by lmeyer           ###   ########.fr       */
+/*   Updated: 2016/07/14 23:06:07 by lmeyer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
 
 int		ft_strlen(char *str);
-void	ft_putstr(char *str);
 char	*ft_strcpy(char *dest, char *src);
 char	*ft_strcat(char *stra, char *strb);
 

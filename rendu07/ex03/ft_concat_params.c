@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: lmeyer <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/07/14 09:28:41 by lmeyer            #+#    #+#             */
-/*   Updated: 2016/07/14 11:57:40 by lmeyer           ###   ########.fr       */
+/*   Created: 2016/07/14 23:02:07 by lmeyer            #+#    #+#             */
+/*   Updated: 2016/07/14 23:09:03 by lmeyer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,31 +39,44 @@ char	*ft_strcpy(char *dest, char *src)
 	return (dest);
 }
 
+char	*ft_strdup(char *src)
+{
+	if (src == NULL)
+		return (0);
+	return (ft_strcpy((char *)malloc(ft_strlen(src) + 1), src));
+}
+
+char	*ft_strcat(char *stra, char *strb)
+{
+	char	*dest;
+
+	if (stra == 0 && strb == 0)
+		return (0);
+	if (stra == 0)
+		return (ft_strdup(strb));
+	if (strb == 0)
+		return (ft_strdup(stra));
+	dest = (char *)malloc(ft_strlen(stra) + ft_strlen(strb) + 1);
+	ft_strcpy(dest, stra);
+	ft_strcpy(dest + ft_strlen(stra), strb);
+	*(dest + ft_strlen(stra) + ft_strlen(strb) + 1) = '\0';
+	return (dest);
+}
+
 char	*ft_concat_params(int argc, char **argv)
 {
 	int		i;
-	int		acc;
 	char	*str;
 
-	if (argc == 1)
+	if (argc <= 1 || argv == 0)
 		return (0);
-	i = 1;
+	str = argv[2];
+	i = 3;
 	while (i <= argc)
 	{
-		acc = acc + ft_strlen(argv[i]) + 1;
+		str = ft_strcat(str, "\n");
+		str = ft_strcat(str, argv[i]);
 		i++;
 	}
-	str = (char *)malloc(acc);
-	i = 1;
-	acc = 0;
-	while (i < argc)
-	{
-		ft_strcpy(str + acc, argv[i]);
-		*(str + acc + ft_strlen(argv[i]) + 1) = '\n';
-		i++;
-		acc = acc + ft_strlen(argv[i]) + 1;
-	}
-	ft_strcpy(str + acc, argv[i]);
-	*(str + acc + ft_strlen(argv[i]) + 1) = '\0';
 	return (str);
 }

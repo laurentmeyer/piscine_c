@@ -1,40 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_ultimate_range.c                                :+:      :+:    :+:   */
+/*   ft_print_words_tables.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lmeyer <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/07/14 22:58:39 by lmeyer            #+#    #+#             */
-/*   Updated: 2016/07/14 22:59:08 by lmeyer           ###   ########.fr       */
+/*   Created: 2016/07/14 22:10:58 by lmeyer            #+#    #+#             */
+/*   Updated: 2016/07/14 23:20:07 by lmeyer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
-
-int		*ft_range(int min, int max)
+void	ft_putstr(char *str)
 {
-	int i;
-	int	diff;
-	int *start;
-
-	diff = max - min;
-	if (diff <= 0)
-		return (0);
-	start = (int *)malloc(4 * diff);
-	i = 0;
-	while (i < diff)
+	if (str == 0)
+		return ;
+	while (*str != '\0')
 	{
-		*(start + i) = min + i;
-		i++;
+		ft_putchar(*str);
+		str++;
 	}
-	return (start);
 }
 
-int		ft_ultimate_range(int **range, int min, int max)
+void	ft_print_words_tables(char **tab)
 {
-	if (range == 0 || ft_range(min, max) == NULL)
-		return (0);
-	*range = ft_range(min, max);
-	return (max - min);
+	int i;
+
+	while (tab[i] != 0)
+	{
+		ft_putstr(tab[i]);
+		ft_putstr("\n");
+		i++;
+	}
 }

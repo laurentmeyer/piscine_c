@@ -5,16 +5,59 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: lmeyer <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/07/14 16:18:19 by lmeyer            #+#    #+#             */
-/*   Updated: 2016/07/14 22:46:20 by lmeyer           ###   ########.fr       */
+/*   Created: 2016/07/14 23:12:33 by lmeyer            #+#    #+#             */
+/*   Updated: 2016/07/14 23:14:43 by lmeyer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
 
-int		ft_count_words(char *str);
-char	*ft_strncpy(char *dest, char *src, unsigned int n);
-int		ft_strlen(char *str);
+int		ft_count_words(char *str)
+{
+	int i;
+
+	if (str == 0)
+		return (0);
+	i = 0;
+	while (str[i] == ' ' || str[i] == '\n' || str[i] == '\t')
+		i++;
+	if (str[i] == '\0')
+		return (0);
+	while (str[i] != ' ' && str[i] != '\n' && str[i] != '\t' && str[i] != '\0')
+		i++;
+	return (1 + ft_count_words(str + i));
+}
+
+char	*ft_strncpy(char *dest, char *src, unsigned int n)
+{
+	unsigned int a;
+
+	a = 0;
+	while (a != n && src[a])
+	{
+		dest[a] = src[a];
+		a++;
+	}
+	while (a != n)
+	{
+		dest[a] = 0;
+		a++;
+	}
+	return (dest);
+}
+
+int		ft_strlen(char *str)
+{
+	int i;
+
+	i = 0;
+	while (*str != 0)
+	{
+		i++;
+		str++;
+	}
+	return (i);
+}
 
 char	**ft_split_whitespaces(char *str)
 {
