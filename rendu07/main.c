@@ -6,7 +6,7 @@
 /*   By: lmeyer <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/07/13 19:12:41 by lmeyer            #+#    #+#             */
-/*   Updated: 2016/07/14 20:59:19 by lmeyer           ###   ########.fr       */
+/*   Updated: 2016/07/14 22:42:36 by lmeyer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include <stdio.h>
@@ -21,6 +21,7 @@ char	*ft_concat_params(int argc, char **argv);
 char	*ft_strcat(char *stra, char *strb);
 int     ft_count_words(char *str);
 char	**ft_split_whitespaces(char *str);
+void	ft_print_words_tables(char **tab);
 	
 int		main(int argc, char **argv)
 {
@@ -76,7 +77,6 @@ int		main(int argc, char **argv)
 
 
 
-
 	ft_putstr("\n\n### EXERCICE 2 ###\n\n");
 	ft_putstr("\nGeneral case\n");
 	ft_putstr("We create an array of integers of size 1 with only value = 7\n");
@@ -101,6 +101,7 @@ int		main(int argc, char **argv)
 	ft_putnbr(ft_ultimate_range(doubleptr, 0, 5) == 0);
 
 
+
 	ft_putstr("\n\n### EXERCICE 3 ###\n\n");
 	ft_putstr("\nTest with some params and without params\n");
 	ft_strcat("coucou ", "c'est nous");
@@ -111,7 +112,7 @@ int		main(int argc, char **argv)
 
 
 	ft_putstr("\n\n### EXERCICE 4 ###\n\n");
-	charptr = "   coucou c'est cool gdf iu76 66  !  ";
+	charptr = "   cou\ncou coo \tl gdf iu76   !  ";
 	ft_putstr(charptr);
 	ft_putstr("\nNombre de mots :\n");
 	ft_putnbr(ft_count_words(charptr));
@@ -124,11 +125,15 @@ int		main(int argc, char **argv)
 		ft_putstr("\n");
 		i++;
 	}
+	ft_putstr("\nCheck that last one is NULL: \n");
+	ft_putnbr(dbcharptr[ft_count_words(charptr)] == 0);
+	ft_putstr("\nCheck that original string has not been changed\n");
+	ft_putstr(charptr);
 
 
 
-
-
+	ft_putstr("\n\n### EXERCICE 4 ###\n\n");
+	ft_print_words_tables(dbcharptr);
 	ft_putstr("##### END #####\n");
 
 

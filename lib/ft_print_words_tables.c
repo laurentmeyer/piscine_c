@@ -1,27 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_count_words.c                                   :+:      :+:    :+:   */
+/*   ft_print_words_tables.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lmeyer <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/07/14 17:17:07 by lmeyer            #+#    #+#             */
-/*   Updated: 2016/07/14 22:01:34 by lmeyer           ###   ########.fr       */
+/*   Created: 2016/07/14 22:10:58 by lmeyer            #+#    #+#             */
+/*   Updated: 2016/07/14 22:43:23 by lmeyer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int		ft_count_words(char *str)
+void	ft_putstr(char *str);
+
+void	ft_print_words_tables(char **tab)
 {
 	int i;
 
-	if (str == 0)
-		return (0);
-	i = 0;
-	while (str[i] == ' ' || str[i] == '\n' || str[i] == '\t')
+	while (tab[i] != 0)
+	{
+		ft_putstr(tab[i]);
+		ft_putstr("\n");
 		i++;
-	if (str[i] == '\0')
-		return (0);
-	while (str[i] != ' ' && str[i] != '\n' && str[i] != '\t' && str[i] != '\0')
-		i++;
-	return (1 + ft_count_words(str + i));
+	}
 }

@@ -6,7 +6,7 @@
 /*   By: lmeyer <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/07/14 16:18:19 by lmeyer            #+#    #+#             */
-/*   Updated: 2016/07/14 21:34:29 by lmeyer           ###   ########.fr       */
+/*   Updated: 2016/07/14 22:10:35 by lmeyer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ char	**ft_split_whitespaces(char *str)
 	int		j;
 	int		words;
 
-	array = (char **)malloc(ft_count_words(str) * sizeof(char*));
+	array = (char **)malloc((ft_count_words(str) + 1) * sizeof(char*));
 	w = 0;
 	words = ft_count_words(str);
 	while (w < words)
@@ -36,11 +36,11 @@ char	**ft_split_whitespaces(char *str)
 		while (str[i + j] != ' ' && str[i + j] != '\n'
 			&& str[i + j] != '\t' && str[i + j] != '\0')
 			j++;
-		array[w] = malloc(j + 1);
-		ft_strncpy(array[w], str + i, j);
-		array[w][j + 1] = '\0';
+		array[w] = malloc(sizeof(char) * (j + 1));
+		*(ft_strncpy(array[w], str + i, j) + j + 1) = '\0';
 		str = str + i + j;
 		w++;
 	}
+	array[words] = 0;
 	return (array);
 }
