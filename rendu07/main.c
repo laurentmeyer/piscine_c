@@ -6,7 +6,7 @@
 /*   By: lmeyer <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/07/13 19:12:41 by lmeyer            #+#    #+#             */
-/*   Updated: 2016/07/14 16:05:24 by lmeyer           ###   ########.fr       */
+/*   Updated: 2016/07/14 20:59:19 by lmeyer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include <stdio.h>
@@ -19,7 +19,8 @@ int		*ft_range(int min, int max);
 int		ft_ultimate_range(int **range, int min, int max);
 char	*ft_concat_params(int argc, char **argv);
 char	*ft_strcat(char *stra, char *strb);
-
+int     ft_count_words(char *str);
+char	**ft_split_whitespaces(char *str);
 	
 int		main(int argc, char **argv)
 {
@@ -30,9 +31,10 @@ int		main(int argc, char **argv)
 	int		*start;
 	int		*array;
 	int		**doubleptr;
+	char	**dbcharptr;
+	char	*charptr;
 
-
-	ft_putstr("\n\n### EXERCICE 1 ###\n\n");
+	ft_putstr("\n\n### EXERCICE 0 ###\n\n");
 	ft_putstr(ft_strdup(NULL));
 	ft_putstr("Case of null pointer OK");
 	ft_putstr(ft_strdup(""));
@@ -44,7 +46,7 @@ int		main(int argc, char **argv)
 
 
 
-	ft_putstr("\n\n### EXERCICE 2 ###\n\n");
+	ft_putstr("\n\n### EXERCICE 1 ###\n\n");
 	ft_putstr("Case of min equal to max, should output one 'cause NULL: ");
 	ft_putnbr(ft_range(0, 0) == 0);
 	ft_putstr("\nCase of min lower than max, should output one 'cause NULL: ");
@@ -75,7 +77,7 @@ int		main(int argc, char **argv)
 
 
 
-	ft_putstr("\n\n### EXERCICE 3 ###\n\n");
+	ft_putstr("\n\n### EXERCICE 2 ###\n\n");
 	ft_putstr("\nGeneral case\n");
 	ft_putstr("We create an array of integers of size 1 with only value = 7\n");
 	array = (int *)malloc(1);
@@ -99,12 +101,37 @@ int		main(int argc, char **argv)
 	ft_putnbr(ft_ultimate_range(doubleptr, 0, 5) == 0);
 
 
-	ft_putstr("\n\n### EXERCICE 4 ###\n\n");
+	ft_putstr("\n\n### EXERCICE 3 ###\n\n");
 	ft_putstr("\nTest with some params and without params\n");
 	ft_strcat("coucou ", "c'est nous");
 	ft_putstr(ft_concat_params(argc, argv));
 	argc = 0;
 	argv = 0;
+
+
+
+	ft_putstr("\n\n### EXERCICE 4 ###\n\n");
+	charptr = "   coucou c'est cool gdf iu76 66  !  ";
+	ft_putstr(charptr);
+	ft_putstr("\nNombre de mots :\n");
+	ft_putnbr(ft_count_words(charptr));
+	ft_putstr("\nList strings:\n");
+	i = 0;
+	dbcharptr = ft_split_whitespaces(charptr);
+	while (i < ft_count_words(charptr))
+	{
+		ft_putstr(dbcharptr[i]);
+		ft_putstr("\n");
+		i++;
+	}
+
+
+
+
+
 	ft_putstr("##### END #####\n");
+
+
+
 	return (0);
 }
