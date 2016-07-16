@@ -5,16 +5,16 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: lmeyer <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/07/14 16:18:19 by lmeyer            #+#    #+#             */
-/*   Updated: 2016/07/14 22:46:20 by lmeyer           ###   ########.fr       */
+/*   Created: 2016/07/16 10:09:17 by lmeyer            #+#    #+#             */
+/*   Updated: 2016/07/16 23:21:01 by lmeyer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
 
-int		ft_count_words(char *str);
 char	*ft_strncpy(char *dest, char *src, unsigned int n);
 int		ft_strlen(char *str);
+int		ft_count_words(char *str);
 
 char	**ft_split_whitespaces(char *str)
 {
@@ -37,7 +37,7 @@ char	**ft_split_whitespaces(char *str)
 			&& str[i + j] != '\t' && str[i + j] != '\0')
 			j++;
 		array[w] = malloc(sizeof(char) * (j + 1));
-		*(ft_strncpy(array[w], str + i, j) + j + 1) = '\0';
+		*(ft_strncpy(array[w], str + i, j) + j) = '\0';
 		str = str + i + j;
 		w++;
 	}
