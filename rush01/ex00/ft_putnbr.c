@@ -1,21 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft.h                                               :+:      :+:    :+:   */
+/*   ft_putnbr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lmeyer <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/07/17 00:26:26 by lmeyer            #+#    #+#             */
-/*   Updated: 2016/07/17 01:39:22 by lmeyer           ###   ########.fr       */
+/*   Created: 2016/07/11 10:25:13 by lmeyer            #+#    #+#             */
+/*   Updated: 2016/07/17 01:38:19 by lmeyer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_H
-# define FT_H
+#include "ft.h"
 
-void	ft_putchar(char c);
-void	ft_putstr(char *str);
-int		ft_strlen(char *str);
-void	ft_putnbr(int nb);
-
-#endif
+void	ft_putnbr(int nb)
+{
+	if (nb >= 0 && nb < 10)
+		ft_putchar(nb + '0');
+	else if (nb == -2147483648)
+	{
+		ft_putnbr(-214748364);
+		ft_putchar('8');
+	}
+	else if (nb < 0)
+	{
+		ft_putchar('-');
+		ft_putnbr(-nb);
+	}
+	else
+	{
+		ft_putnbr(nb / 10);
+		ft_putchar(nb % 10 + '0');
+	}
+}
