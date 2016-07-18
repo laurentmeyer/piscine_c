@@ -1,0 +1,45 @@
+PROBLEMEATIQUE DE COMPILATION
+
+GCC est un compilateur complexe.
+L;outil Makefile permet de faire une compilation avec une granularite fine
+
+Make n'est pas le seul outil de ce genre a disposition. Aller voir sur Internet pour voir les alternatives
+
+Un Makefile est tout simplement un fichier nomme makefile.
+
+Si on considere que le makefile possede une regle clean, il suffit de lancer depuis le terminal:
+make clean
+
+Les regles du makefile sont d'une syntaxe tres simple. Elles sont composees :
+- d'un nom
+- d'une liste de dependance
+- de la definition de la regle qui sont une suite de commandes shell a executer
+
+
+Editer un fichier appelé Makefile:
+ne Makefile
+
+Puis on remplit de regles, par exemple:
+regle_a:
+
+Suivi de toutes les regles qui doivent etre executees avant la regle_a
+
+les lignes de shell a executer doivent commencer par une tabulation.
+Chaque ligne de shell va etre imprimee a l'ecran avant d'etre executee
+(sauf si on fait preceder la commande d'un @)
+
+
+
+VARIABLES
+Les variables se definissent en majuscules (convention 42) suivies de =. Ex:
+TEXT = "42 is for the braves"
+
+Puis est utilisee dans la regle avec le symbole $ suivi de parentheses.
+ex : echo $(TEXT)
+
+Si on utilise juste make dans le terminal, la premiere regle rencontree sera executee
+
+
+EXEMPLE
+comme pour les macros du preprocesseur en C, on peut mettre un retour a la ligne avec backslash
+

@@ -1,0 +1,31 @@
+
+*: operateur de dereferencement
+
+Il est possible de dereferencer l'adresse d'une fonction.
+
+SYNTAXE
+
+Rappel de la declaration d'une fonction:
+void	f(char c);
+
+Par consequent le pointeur sur fonction est de la forme:
+void	(*funptr)(char)
+
+Pas besoin de typer le retour de la fonction pointee
+
+Il existe une possibilite de faire un typedef pour rendre la declaration des pointeurs sur fonction plus lisible:
+
+typedef	void(*funptr)(char);
+
+On met le nom du type qu'on veut a;liaser q la place de la variable qu'on aurait utilise.
+
+apres on aurait pu declarer f dans une fonction ainsi:
+funptr	f;
+
+
+
+EXEMPLE
+Les pointeurs peuvent apporter de l'aide et une lisibilite.
+En pseudo code:
+
+

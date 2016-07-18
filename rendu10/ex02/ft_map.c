@@ -1,29 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_stock_par.h                                     :+:      :+:    :+:   */
+/*   ft_map.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lmeyer <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/07/16 19:01:21 by lmeyer            #+#    #+#             */
-/*   Updated: 2016/07/16 21:44:30 by lmeyer           ###   ########.fr       */
+/*   Created: 2016/07/18 15:41:35 by lmeyer            #+#    #+#             */
+/*   Updated: 2016/07/18 15:47:43 by lmeyer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_STOCK_PAR_H
-# define FT_STOCK_PAR_H
+#include <stdlib.h>
 
-# include <stdlib.h>
-
-typedef struct		s_stock_par
+int		*ft_map(int *tab, int *length, int (*f)(int))
 {
-	int		size_param;
-	char	*str;
-	char	*copy;
-	char	**tab;
-}					t_stock_par;
 
-char				**ft_split_whitespaces(char *str);
-void				ft_show_tab(struct s_stock_par *par);
-
-#endif

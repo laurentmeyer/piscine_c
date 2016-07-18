@@ -1,29 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_stock_par.h                                     :+:      :+:    :+:   */
+/*   match.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lmeyer <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/07/16 19:01:21 by lmeyer            #+#    #+#             */
-/*   Updated: 2016/07/16 21:44:30 by lmeyer           ###   ########.fr       */
+/*   Created: 2016/07/17 08:40:45 by lmeyer            #+#    #+#             */
+/*   Updated: 2016/07/17 08:47:14 by lmeyer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_STOCK_PAR_H
-# define FT_STOCK_PAR_H
-
-# include <stdlib.h>
-
-typedef struct		s_stock_par
+int		match(char *s1, char *s2)
 {
-	int		size_param;
-	char	*str;
-	char	*copy;
-	char	**tab;
-}					t_stock_par;
+	i =
 
-char				**ft_split_whitespaces(char *str);
-void				ft_show_tab(struct s_stock_par *par);
+	if (*s2 == '*')
 
-#endif
+
+}
+
+int		main(void)
+{
+	printf("%d\n", match("main.c", "*.c");
+	printf("%d\n", match("main.c", "mai*");
+	printf("%d\n", match("main.c", "mai*.c");
+	printf("%d\n", match("main.c", "*ai*");
+	printf("%d\n", match("main.c", "*aoni*");
+	return (0);
+}

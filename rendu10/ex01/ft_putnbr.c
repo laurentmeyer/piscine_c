@@ -1,29 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_stock_par.h                                     :+:      :+:    :+:   */
+/*   ft_putnbr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lmeyer <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/07/16 19:01:21 by lmeyer            #+#    #+#             */
-/*   Updated: 2016/07/16 21:44:30 by lmeyer           ###   ########.fr       */
+/*   Created: 2016/07/11 10:25:13 by lmeyer            #+#    #+#             */
+/*   Updated: 2016/07/11 15:14:23 by lmeyer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_STOCK_PAR_H
-# define FT_STOCK_PAR_H
+void	ft_putchar(char c);
 
-# include <stdlib.h>
-
-typedef struct		s_stock_par
+void	ft_putnbr(int nb)
 {
-	int		size_param;
-	char	*str;
-	char	*copy;
-	char	**tab;
-}					t_stock_par;
-
-char				**ft_split_whitespaces(char *str);
-void				ft_show_tab(struct s_stock_par *par);
-
-#endif
+	if (nb >= 0 && nb < 10)
+		ft_putchar(nb + '0');
+	else if (nb == -2147483648)
+	{
+		ft_putnbr(-214748364);
+		ft_putchar('8');
+	}
+	else if (nb < 0)
+	{
+		ft_putchar('-');
+		ft_putnbr(-nb);
+	}
+	else
+	{
+		ft_putnbr(nb / 10);
+		ft_putchar(nb % 10 + '0');
+	}
+}

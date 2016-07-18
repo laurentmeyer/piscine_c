@@ -1,29 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_stock_par.h                                     :+:      :+:    :+:   */
+/*   main01.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lmeyer <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/07/16 19:01:21 by lmeyer            #+#    #+#             */
-/*   Updated: 2016/07/16 21:44:30 by lmeyer           ###   ########.fr       */
+/*   Created: 2016/07/18 15:29:53 by lmeyer            #+#    #+#             */
+/*   Updated: 2016/07/18 15:45:50 by lmeyer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_STOCK_PAR_H
-# define FT_STOCK_PAR_H
+void	ft_putnbr(int i);
+void	ft_foreach(int *tab, int length, void(*f)(int));
 
-# include <stdlib.h>
-
-typedef struct		s_stock_par
+int	main(void)
 {
-	int		size_param;
-	char	*str;
-	char	*copy;
-	char	**tab;
-}					t_stock_par;
+	int tab[3];
 
-char				**ft_split_whitespaces(char *str);
-void				ft_show_tab(struct s_stock_par *par);
-
-#endif
+	tab[0] = 12;
+	tab[1] = 42;
+	tab[2] = 1337;
+	ft_foreach(tab, 3, &ft_putnbr);
+	return (0);
+}

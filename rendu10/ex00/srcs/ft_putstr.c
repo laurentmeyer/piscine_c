@@ -1,29 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_stock_par.h                                     :+:      :+:    :+:   */
+/*   ft_putstr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lmeyer <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/07/16 19:01:21 by lmeyer            #+#    #+#             */
-/*   Updated: 2016/07/16 21:44:30 by lmeyer           ###   ########.fr       */
+/*   Created: 2016/07/11 09:58:27 by lmeyer            #+#    #+#             */
+/*   Updated: 2016/07/13 23:48:48 by lmeyer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_STOCK_PAR_H
-# define FT_STOCK_PAR_H
+void	ft_putchar(char c);
 
-# include <stdlib.h>
-
-typedef struct		s_stock_par
+void	ft_putstr(char *str)
 {
-	int		size_param;
-	char	*str;
-	char	*copy;
-	char	**tab;
-}					t_stock_par;
-
-char				**ft_split_whitespaces(char *str);
-void				ft_show_tab(struct s_stock_par *par);
-
-#endif
+	if (str == 0)
+		return ;
+	while (*str != '\0')
+	{
+		ft_putchar(*str);
+		str++;
+	}
+}

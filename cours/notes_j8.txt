@@ -1,0 +1,172 @@
+Preprocesseur = phase avant la compilation
+Ce qui s'y rapporte est precede d'un diese
+Le prototype de write est dans un fichier unistd.h
+Entre chevrons = aller chercher dans le path qui est cherche automatiquement par le compilateur
+Le path peut etre modifie
+On peut aussi mettre comme path le dossier courant, en mettant entre guillemets
+La commande de preprocesseur s'appelle cpp
+C'est la bonne maniere de faire, le programme devient portatif
+On peut faire des include de tous types de fichiers mais il est conseille de ne faire que des points h
+
+
+L'avantage des include.h c'est d'éviter d'avoir des différences entre les declarations de include dans deux fichiers différents (ex entre le main et la fonction)
+Il faut mettre les prototypes des .c dans les .h, et inclure les .h dans les .c
+
+
+Faire des macros avec
+#define TOTO int
+des que le compilateur voit TOTO il remplace par int
+De maniere bete et mechante, avec les guillemets etc
+On peut passer des paramtres.
+ex:
+#define TOTO(x) int x;
+Va remplacer
+TOTO(a) par:
+int a
+plutot deconseille
+
+TOTO(x) #x va remplacer:
+str = TOTO(a);
+par la string x
+
+#define TITI(x) TOTO(x); TOTO(x)
+
+
+
+#ifdef TOTO : si on a defini un TOTO, on execute ce qui se trouve jusqu'au #endif
+#ifndef : exactement l'inverse
+#elif : else if, mais deconseille
+
+Proteger des inclusions multiples :
+#ifndef : si on n'a pas encore defini
+
+#ifndef __FT__TEST1_H__
+#define __FT_TEST1_H__
+#include "test2.h"
+#endif
+
+Conseil : faire une macro qui protege systematiquement les .h
+
+
+
+TYPEDEF
+Permet de definir nos propres types
+
+typedef type_a_modifier nom_du_type
+
+C'est fait au moment de la compilation, pas du preprocesseur, donc soumis au scope.
+
+
+
+STRUCT
+struct s_point;
+{
+	int x;
+	int y;
+}
+
+Puis dans les fonctions
+
+struct s_point a;
+a.x = 10;
+a.y = 42;
+
+On peut aussi faire une copie de a.
+Attention neanmoins, cela peut etre tres lourd, souvent un pointeur est suffisant.
+
+
+On peut combiner intelligemment les typedef et les structures.
+typedef	struct	s_point
+{
+	int x;
+	int y;
+}			t_point;
+
+void	ft_putstr(char *str);
+
+Petite regle speciale pour les pointeurs
+Si on a
+ptr = &a;
+alors :
+*(ptr) = 10;
+est equivalent a :
+ptr->a = 10;
+
+
+
+ENUMS
+
+Pouvoir mettre des mots a la place des chiffres
+
+enum	e_list
+{
+	val1,
+	val2,
+	val3
+};
+
+int main(void)
+{
+	enum e_list a;
+
+	a = val1;
+	return (0);
+}
+
+Attention, val1 vaut zero etc.
+On pourrait declarer dans l'enum val1 = 4, ce qui ferait que va2 = 5 etc
+Attention, tous les noms dans les enums sont maintenant associes a leur valeur.
+
+
+LES UNIONS
+Permet d'acceder au meme espace memoire mais de manieres differentes
+
+Comme on est sur un processeur 32 bits (4 octects), le compilateur fait
+un padding automatique a 4 octects si on lui donne un ou plusieurs int.
+
+La taille d'un union est la taille de son plus grand element
+
+union u_test
+{
+	int		i;
+	char	c;
+	float	f;
+	char	tab[4];
+}
+
+int main (void)
+{
+	union u_test	a;
+	a.i = 424242;
+	ft_putbr(a.tab[0]);
+	return(0);
+}
+
+cela va imprimer la valeur contenue dans le premier octet parmi les quatre 
+que contient  l'int a.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

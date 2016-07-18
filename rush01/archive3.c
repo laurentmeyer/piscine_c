@@ -6,7 +6,7 @@
 /*   By: lmeyer <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/07/17 00:12:41 by lmeyer            #+#    #+#             */
-/*   Updated: 2016/07/17 22:14:36 by lmeyer           ###   ########.fr       */
+/*   Updated: 2016/07/17 18:36:12 by lmeyer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,19 +49,20 @@ char		*ft_args_to_tab(char **av)
 	int		j;
 	char	*dest;
 
-	i = 0;
+	i = 1;
 	dest = (char *)malloc(82 * sizeof(char));
-	while (i < 9)
+	while (i <= 9)
 	{
 		j = 0;
 		while (j < 9)
 		{
-			*(dest + 9 * i + j) = av[i + 1][j];
+			dest[9 * i + j] = av[i][j];
 			j++;
 		}
 		i++;
 	}
 	dest[81] = '\0';
+	ft_putstr(dest);
 	return (dest);
 }
 
@@ -71,12 +72,11 @@ int		ft_check_tab(char *tab)
 	int line;
 	int col;
 	int block;
-	int j;
 
 	i = 0;
 	while (i < 81)
 	{
-		if (tab[i] != '.')
+		if (dest[i] != '.')
 		{
 			line = i / 9;
 			col = i % 9;
@@ -85,11 +85,11 @@ int		ft_check_tab(char *tab)
 			j = 0;
 			while (j < 81)
 			{
-				if (tab[i] == tab[j] && i != j && (j / 9) == line)
+				if (dest[i] == dest[j] && i != j && (j / 9) == line)
 					return (0);
-				if (tab[i] == tab[j] && i != j && (j % 9) == col)
+				if (dest[i] == dest[j] && i != j && (j % 9) == col)
 					return (0);
-				if (tab[i] == tab[j] && i != j
+				if (dest[i] == dest[j] && i != j
 						&& ((j / 9) / 3) * 3 + ((j % 9) / 3))
 					return (0);
 			}
@@ -100,88 +100,125 @@ int		ft_check_tab(char *tab)
 	return (1);
 }	
 
-int		ft_block(int pos)
-{
-	return (((pos / 9) / 3) * 3 + ((pos % 9) / 3));
-}
 
-char		*ft_check_insert(char* tab, char c, int pos)
-{
-	int		i;
-	char	*dest;
 
+/*
+void	ft_print_sudoku(int* line)
+{
+	int i;
+
+	if (line == 0)
+		return ;
 	i = 0;
 	while (i < 81)
 	{
-		if (tab[i] == c && i != pos)
-		{
-			if ((pos / 9) == (i / 9))
-				return (0);
-			if ((pos % 9) == (i % 9))
-				return (0);
-			if (ft_block(i) == ft_block(pos))
-				return(0);
-		}
+		ft_putnbr(line[i]);
 		i++;
 	}
-	dest = ft_strdup(tab);
-	dest[pos] = c;
-	return (dest);
 }
 
-char		*ft_rec_asc(char *tab, char min_char)
+int		ft_check_dup_line(int *tab, int pos, int val)
 {
-	int		i;
-	char	j;
-	char	*copy;
+	int line;
+	int i;
 
-	copy = ft_strdup(tab);
-	ft_putstr(tab);
-	ft_putstr("\n");
-	
+	line = pos / 9;
 	i = 0;
-	while (tab[i] != '\0')
+	while (i < 81)
 	{
-		while (tab[i] != '.')
+		if (i != pos && i / 9 == line && tab[i] == val)
+			return (1);
+		i++;
+	}
+	return (0);
+}
+
+int		ft_check_dup_col(int *tab, int pos, int val)
+{
+	int col;
+	int i;
+
+	col = pos % 9;
+	i = 0;
+	while (i < 81)
+	{
+		if (i != pos && i % 9 == col && tab[i] == val)
+			return (1);
+		i++;
+	}
+	return (0);
+}
+
+int		ft_check_dup_block(int *tab, int pos, int val)
+{
+	int i;
+	int block;
+	int line;
+	int col;
+
+	line = pos / 9;
+	col = pos % 9;
+	block = (line / 3) * 3 + (col / 3);
+	i = 0;
+	while (i < 81)
+	{
+		if (i != pos && ((i / 9) / 3) * 3 + (i % 9) / 3 == block && tab[i] == val)
+			return (1);
+		i++;
+	}
+	return (0);
+}
+
+int		ft_check_lines(int *tab)
+{
+	int i;
+
+	i = 0;
+	while (i < 81)
+	return (
+
+
+int		*ft_rec_inc(int	*tab)
+{
+	int i;
+	int	j;
+	int *copy;
+
+	ft_print_sudoku(tab);
+	ft_putchar('\n');
+	i = 0;
+	while (i < 81)
+	{
+		if (tab[i] != 0)
 			i++;
-		min_char == '.' ? (j = '1') : (j = min_char + 1);
-		ft_putchar('\n');
-		ft_putchar(i);
-		ft_putchar('\n');
-		ft_putchar(j);
-		ft_putchar('\n');
-		while (j < '9')
+		copy = ft_tabdup(tab, 81);
+		j = 1;
+		while (j <= 9)
 		{
-			if (ft_check_insert(tab, j, i) == 0)
+			if (ft_check_dup_block(tab, i, j)
+					|| ft_check_dup_col(tab, i, j)
+					|| ft_check_dup_line(tab, i, j))
+				return (
+			copy[i] = j;
+			if (ft_rec_inc(copy) == 0)
 				j++;
-			return (ft_rec_asc(ft_check_insert(tab, j, i), '.'));
-		}
-		if (ft_check_insert(tab, '9', i) == 0)
-		{
-	ft_putstr("coucou\n");
-			while (copy[i] != '.')
-				i--;
-			j = tab[i];
-			tab[i] = '.';
-			return (ft_rec_asc(tab, j + 1));
+			else
+				return (ft_rec_inc(copy));
 		}
 	}
-	return (tab);
+		return (tab);
 }
+*/
 
 int		main(int argc, char **argv)
 {
-	char *tab;
 
-	tab = 0;
 	if (ft_valid_params(argc, argv) == 0)
 		ft_putstr("Erreur\n");
+	//else if (ft_dup_m(ft_ltom(ft_argstol(argv))) == 1)
+	//	ft_putstr("Erreur\n");
 	else
-		tab = ft_args_to_tab(argv);
-		ft_putstr(tab);		
-		ft_putchar('\n');
-		//ft_putstr("Arguments valides: ");
-		//ft_putnbr(ft_check_tab(ft_args_to_tab(argv)));
-		ft_putstr(ft_rec_asc(tab, '.')); 
+		ft_args_to_tab(argv);		
+		//ft_print_sudoku(ft_rec_inc(ft_argstol(argv)));
 	return (0);
 }
