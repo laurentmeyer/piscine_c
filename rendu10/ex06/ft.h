@@ -1,29 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft.h                                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lmeyer <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/07/18 19:36:37 by lmeyer            #+#    #+#             */
-/*   Updated: 2016/07/19 22:41:02 by lmeyer           ###   ########.fr       */
+/*   Created: 2016/07/16 12:16:52 by lmeyer            #+#    #+#             */
+/*   Updated: 2016/07/19 22:21:40 by lmeyer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft.h"
-#include "ft_do_op.h"
+#ifndef FT_H
+# define FT_H
 
-int							main(int argc, char **argv)
-{
-	int		a;
-	int		b;
-	t_ftptr	f;
+void	ft_putchar(char c);
+void	ft_putstr(char *str);
+void	ft_putnbr(int nb);
+int		ft_atoi(char *str);
 
-
-	if (argc != 4)
-		return (0);
-	a = ft_atoi(argv[1]);
-	b = ft_atoi(argv[3]);
-	f = ft_do_op(argv[2]);	
-	return (0);
-}
+#endif
