@@ -40,6 +40,11 @@ void	ft_putnbr(int nb)
 
 void		ft_print_int_list(t_list *list)
 {
+	if (list == 0)
+	{
+		ft_putstr("NULL list\n");
+		return ;
+	}
 	while (list->next != NULL)
 	{
 		ft_putnbr(*((int *)list->data));
@@ -50,21 +55,48 @@ void		ft_print_int_list(t_list *list)
 	ft_putchar('\n');
 }
 
-void		ft_list_push_back(t_list **begin_list, void *data);
+void		ft_print_str_list(t_list *list)
+{
+	if (list == 0)
+	{
+		ft_putstr("NULL list\n");
+		return ;
+	}
+	while (list->next != NULL)
+	{
+		ft_putstr(*((char **)list->data));
+		ft_putchar('\n');
+		list = list->next;
+	}
+	ft_putstr(*((char **)list->data));
+	ft_putchar('\n');
+}
 
-int			main(void)
+int		ft_list_size(t_list *begin_list)
+{
+	int acc;
+	
+	acc = 0;
+	if (begin_list)
+	{
+		acc = 1;
+		while (begin_list->next != 0)
+		{
+			begin_list = begin_list->next;
+			acc++;
+		}
+	}
+	return (acc);
+}
+
+t_list		*ft_list_push_params(int ac, char **av);
+
+int			main(int argc, char **argv)
 {
 	t_list	*list;
-	int		i;
-	int		j;
-	int		k;
 
-	i = 42;
-	list = ft_create_elem(&i);
-	j = 12;
-	ft_list_push_back(&list, &j);
-	k = 256;
-	ft_list_push_back(&list, &k);
-	ft_print_int_list(list);
+	list = ft_list_push_params(argc, argv);
+	ft_print_str_list(list);
+	ft_putnbr(ft_list_size(list));
 	return (0);
 }

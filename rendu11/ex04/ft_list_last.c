@@ -1,26 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_create_elem.c                                   :+:      :+:    :+:   */
+/*   ft_list_last.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lmeyer <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/07/19 09:56:22 by lmeyer            #+#    #+#             */
-/*   Updated: 2016/07/19 15:37:29 by lmeyer           ###   ########.fr       */
+/*   Created: 2016/07/19 16:40:52 by lmeyer            #+#    #+#             */
+/*   Updated: 2016/07/19 17:33:14 by lmeyer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_list.h"
 
-t_list 	*ft_create_elem(void *data)
+t_list		*ft_list_last(t_list *begin_list)
 {
-	t_list	*list;
-
-	list = malloc(sizeof(t_list));
-	if (list)
+	if (begin_list)
 	{
-		list->data = data;
-		list->next = NULL;
+		while (begin_list->next != 0)
+		{
+			begin_list = begin_list->next;
+		}
 	}
-	return(list);
+	return (begin_list);
 }

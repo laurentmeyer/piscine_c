@@ -50,7 +50,7 @@ void		ft_print_int_list(t_list *list)
 	ft_putchar('\n');
 }
 
-void		ft_list_push_back(t_list **begin_list, void *data);
+void		ft_list_push_front(t_list **begin_list, void *data);
 
 int			main(void)
 {
@@ -62,9 +62,9 @@ int			main(void)
 	i = 42;
 	list = ft_create_elem(&i);
 	j = 12;
-	ft_list_push_back(&list, &j);
+	ft_list_push_front(&list, &j);
 	k = 256;
-	ft_list_push_back(&list, &k);
+	ft_list_push_front(&list, &k);
 	ft_print_int_list(list);
 	return (0);
 }

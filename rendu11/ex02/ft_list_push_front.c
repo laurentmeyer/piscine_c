@@ -1,26 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_create_elem.c                                   :+:      :+:    :+:   */
+/*   ft_list_push_front.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lmeyer <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/07/19 09:56:22 by lmeyer            #+#    #+#             */
-/*   Updated: 2016/07/19 15:37:29 by lmeyer           ###   ########.fr       */
+/*   Created: 2016/07/19 15:39:32 by lmeyer            #+#    #+#             */
+/*   Updated: 2016/07/19 18:19:11 by lmeyer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_list.h"
 
-t_list 	*ft_create_elem(void *data)
+void		ft_list_push_front(t_list **begin_list, void *data)
 {
-	t_list	*list;
+	t_list	*new_elem;
 
-	list = malloc(sizeof(t_list));
-	if (list)
+	new_elem = ft_create_elem(data);
+	if (new_elem)
 	{
-		list->data = data;
-		list->next = NULL;
+		new_elem->next = *begin_list;
+		*begin_list = new_elem;
 	}
-	return(list);
 }

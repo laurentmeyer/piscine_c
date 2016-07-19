@@ -1,4 +1,5 @@
 #include "ft_list.h"
+#include <stdlib.h>
 #include <unistd.h>
 
 void	ft_putchar(char c)
@@ -50,7 +51,32 @@ void		ft_print_int_list(t_list *list)
 	ft_putchar('\n');
 }
 
-void		ft_list_push_back(t_list **begin_list, void *data);
+t_list 	*ft_create_elem(void *data)
+{
+	t_list	*list;
+
+	list = malloc(sizeof(t_list));
+	if (list)
+	{
+		list->data = data;
+		list->next = NULL;
+	}
+	return(list);
+}
+
+void		ft_list_push_front(t_list **begin_list, void *data)
+{
+	t_list	*new_elem;
+
+	new_elem = ft_create_elem(data);
+	if (new_elem)
+	{
+		new_elem->next = *begin_list;
+		*begin_list = new_elem;
+	}
+}
+
+t_list		*ft_list_last(t_list *begin_list);
 
 int			main(void)
 {
@@ -59,12 +85,22 @@ int			main(void)
 	int		j;
 	int		k;
 
+	list = 0;
+	ft_putnbr(ft_list_last(list) == 0);
+	//ft_putnbr(*((int *)ft_list_last(list)->data) == 0);
+	ft_putchar('\n');
 	i = 42;
 	list = ft_create_elem(&i);
 	j = 12;
-	ft_list_push_back(&list, &j);
+	ft_list_push_front(&list, &j);
 	k = 256;
-	ft_list_push_back(&list, &k);
+	ft_list_push_front(&list, &k);
 	ft_print_int_list(list);
+	ft_putchar('\n');
+	ft_putnbr(*((int *)ft_list_last(list)->data));
+	ft_putchar('\n');
+	ft_putchar('\n');
+	ft_print_int_list(list);
+	ft_putchar('\n');
 	return (0);
 }
