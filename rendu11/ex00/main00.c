@@ -1,20 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main01.c                                           :+:      :+:    :+:   */
+/*   main00.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lmeyer <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/07/18 15:29:53 by lmeyer            #+#    #+#             */
-/*   Updated: 2016/07/18 16:25:45 by lmeyer           ###   ########.fr       */
+/*   Created: 2016/07/19 09:53:27 by lmeyer            #+#    #+#             */
+/*   Updated: 2016/07/19 12:09:53 by lmeyer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "ft_list.h"
 #include <unistd.h>
+
+t_list		*ft_create_elem(void *data);
 
 void	ft_putchar(char c)
 {
 	write(1, &c, 1);
+}
+
+void	ft_putstr(char *str)
+{
+	if (str == 0)
+		return ;
+	while (*str != '\0')
+	{
+		ft_putchar(*str);
+		str++;
+	}
 }
 
 void	ft_putnbr(int nb)
@@ -38,15 +52,28 @@ void	ft_putnbr(int nb)
 	}
 }
 
-void	ft_foreach(int *tab, int length, void(*f)(int));
-
-int	main(void)
+void		ft_print_list(t_list *list)
 {
-	int tab[3];
+	while (list->next != NULL)
+	{
+		ft_putstr(list->data);
+		list = list->next;
+	}
+	ft_putstr(list->data);
+}
 
-	tab[0] = 12;
-	tab[1] = 42;
-	tab[2] = 1337;
-	ft_foreach(tab, 3, &ft_putnbr);
+
+int			main(void)
+{
+	t_list	*list;
+	char	*str;
+	int		i;
+
+	str = "coucou\n";
+	list = ft_create_elem(str);
+	ft_putstr((char *)list->data);
+	i = 42;
+	list = ft_create_elem(&i);
+	ft_putnbr(*((int *)list->data));
 	return (0);
 }

@@ -1,0 +1,59 @@
+Les listes chainees sont un ensemble de maillons, apars en memoire, et formant entre eux une chaine. Ces maillons (des structures) contiennent des donnees arbitrairement choisies et un lien (ou pointeur) vers un autre maillon.
+
+Par consequent il est assez simple de changer un element ou de reordonner la liste. Contrairement aux tableaux, on n'a pas besoin d'allouer toute la memoire.
+
+EXEMPLE PRATIQUE
+
+Petite particularite : definir un typedef sur le type de structure a venir.
+
+Dans le .h:
+typedef struct s_list t_list;
+
+struct s_list {
+	char *str;
+	struct s_list *next;
+};
+
+t_list	*add_link(t_list *list, char *str);
+void	print_list(t_list *list);
+
+Dans le main:
+
+int main(void)
+{
+	t_list *list;
+
+	list = NULL;
+	list = add_link(list, "toto\n");
+	list = add_link(list, "tata\n");
+	list = add_link(list, "tutu\n");
+
+	print_list(list);
+
+	return(0);
+}
+
+Fonction add_link:
+t_list	*add_link(t_list *list, char *str)
+{
+	t_list *tmp;
+
+	tmp = malloc(sizeof((t_list));
+	if (tmp)
+	{
+		tmp->str = str;
+		tmp->next = list;
+	}
+	return(tmp);
+}
+
+
+POINTEURS SUR POINTEURS
+On peut aussi ecrire add_link ainsi:
+int		add_link(t_list **list, char *str)
+{
+	*list = malloc(...)
+}
+
+Il faut donc l'appeler comme cela :
+add_link (&list, "toto\n");

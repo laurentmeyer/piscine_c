@@ -1,0 +1,5 @@
+Credentials cache: API:17851
+        Principal: lmeyer@42.FR
+
+  Issued                Expires               Principal
+Jul 18 18:32:50 2016  Jul 19 04:32:50 2016  krbtgt/42.FR@42.FR

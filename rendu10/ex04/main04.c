@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main01.c                                           :+:      :+:    :+:   */
+/*   main04.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lmeyer <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/07/18 15:29:53 by lmeyer            #+#    #+#             */
-/*   Updated: 2016/07/18 16:25:45 by lmeyer           ###   ########.fr       */
+/*   Created: 2016/07/18 18:07:05 by lmeyer            #+#    #+#             */
+/*   Updated: 2016/07/18 18:07:10 by lmeyer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,15 +38,23 @@ void	ft_putnbr(int nb)
 	}
 }
 
-void	ft_foreach(int *tab, int length, void(*f)(int));
+int		ft_isempty(char *str)
+{
+	if (str[0] == '\0')
+		return (1);
+	return (0);
+}
+
+int ft_count_if(char **tab, int(*f)(char*));
 
 int	main(void)
 {
-	int tab[3];
+	char *tab[4];
 
-	tab[0] = 12;
-	tab[1] = 42;
-	tab[2] = 1337;
-	ft_foreach(tab, 3, &ft_putnbr);
+	tab[0] = "";
+	tab[1] = "42";
+	tab[2] = "";
+	tab[3] = 0;
+	ft_putnbr(ft_count_if(tab, &ft_isempty));
 	return (0);
 }

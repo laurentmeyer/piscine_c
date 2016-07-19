@@ -1,18 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putchar.c                                       :+:      :+:    :+:   */
+/*   ft_create_elem.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lmeyer <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/07/12 19:50:59 by lmeyer            #+#    #+#             */
-/*   Updated: 2016/07/12 19:52:32 by lmeyer           ###   ########.fr       */
+/*   Created: 2016/07/19 09:56:22 by lmeyer            #+#    #+#             */
+/*   Updated: 2016/07/19 12:10:07 by lmeyer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
+#include "ft_list.h"
 
-void	ft_putchar(char c)
+t_list 	*ft_create_elem(void *data)
 {
-	write(1, &c, 1);
+	t_list	*list;
+
+	list = malloc(sizeof(t_list));
+	list->data = data;
+	list->next = NULL;
+	return(list);
 }
