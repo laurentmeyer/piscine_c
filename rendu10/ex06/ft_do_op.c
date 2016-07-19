@@ -6,31 +6,31 @@
 /*   By: lmeyer <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/07/19 22:03:34 by lmeyer            #+#    #+#             */
-/*   Updated: 2016/07/19 22:40:12 by lmeyer           ###   ########.fr       */
+/*   Updated: 2016/07/19 22:56:04 by lmeyer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_do_op.h"
 
-void						ft_print_addition(int a, int b)
+void		ft_print_addition(int a, int b)
 {
 	ft_putnbr(a + b);
 	ft_putchar('\n');
 }
 
-void						ft_print_subtraction(int a, int b)
+void		ft_print_subtraction(int a, int b)
 {
 	ft_putnbr(a - b);
 	ft_putchar('\n');
 }
 
-void						ft_print_multiplication(int a, int b)
+void		ft_print_multiplication(int a, int b)
 {
 	ft_putnbr(a * b);
 	ft_putchar('\n');
 }
 
-void						ft_print_division(int a, int b)
+void		ft_print_division(int a, int b)
 {
 	if (b == 0)
 		ft_putstr("Stop : division by zero\n");
@@ -41,7 +41,7 @@ void						ft_print_division(int a, int b)
 	}
 }
 
-void						ft_print_modulo(int a, int b)
+void		ft_print_modulo(int a, int b)
 {
 	if (b == 0)
 		ft_putstr("Stop : modulo by zero\n");
@@ -52,14 +52,14 @@ void						ft_print_modulo(int a, int b)
 	}
 }
 
-void						ft_print_zero(int a, int b)
+void		ft_print_zero(int a, int b)
 {
 	(void)a;
 	(void)b;
 	ft_putstr("0\n");
 }
 
-t_ftptr						ft_do_op(char *str)
+t_ftptr		ft_do_op(char *str)
 {
 	char	symbols[6];
 	t_ftptr	functions[6];
