@@ -6,9 +6,11 @@
 /*   By: lmeyer <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/07/19 23:54:36 by lmeyer            #+#    #+#             */
-/*   Updated: 2016/07/20 00:22:28 by lmeyer           ###   ########.fr       */
+/*   Updated: 2016/07/20 20:52:14 by lmeyer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include "ft_list.h"
 
 void	ft_list_clear(t_list **begin_list)
 {
@@ -25,5 +27,5 @@ void	ft_list_clear(t_list **begin_list)
 		current_elem = next_elem;
 	}
 	free(current_elem);
-	begin_list = 0;
+	*begin_list = 0;
 }

@@ -6,7 +6,7 @@
 /*   By: lmeyer <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/07/19 17:40:57 by lmeyer            #+#    #+#             */
-/*   Updated: 2016/07/19 18:17:24 by lmeyer           ###   ########.fr       */
+/*   Updated: 2016/07/20 19:55:56 by lmeyer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ t_list		*ft_list_push_params(int ac, char **av)
 {
 	int		i;
 	t_list	*list;
-	
+
 	if (ac == 1)
 		return (0);
 	list = ft_create_elem(&av[1]);

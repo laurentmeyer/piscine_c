@@ -143,18 +143,34 @@ t_list		*ft_list_push_params(int ac, char **av)
 	}
 	return (list);
 }
-void	ft_list_clear(t_list **begin_list);
+
+t_list		*ft_list_at(t_list *begin_list, unsigned int nbr);
 
 int			main(void)
 {
 	t_list	*list;
-	t_list	*list1;
-	t_list	*list2;
-	t_list	*list3;
-	t_list	**listptr;
+	t_list	*result;
 	int		i;
 	int		j;
 	int		k;
+
+	list = NULL;
+	ft_putstr("With empty list:\n");
+	result = ft_list_at(list, 1);
+	ft_putstr("Returns NULL pointer: ");
+	ft_putnbr(result == 0);
+	ft_putchar('\n');
+
+	i = 42;
+	list = ft_create_elem(&i);
+	ft_putstr("With 1 elem list:\n");
+	result = ft_list_at(list, 1);
+	ft_putstr("Returns NULL pointer: ");
+	ft_putnbr(result == 0);
+	ft_putchar('\n');
+	ft_putstr("Returns: ");
+	ft_putnbr(*(int *)(result->data));
+	ft_putchar('\n');
 
 	i = 42;
 	list = ft_create_elem(&i);
@@ -162,33 +178,13 @@ int			main(void)
 	ft_list_push_front(&list, &j);
 	k = 256;
 	ft_list_push_front(&list, &k);
-	list1 = list;
-	list2 = list1->next;
-	list3 = list2->next;
-	listptr = &list;
-	ft_print_int_list(*listptr);
-
-	ft_putstr("Before list clear:\n");
-	ft_putstr("Adresses point to NULL elements: \n");
-	ft_putnbr((list1 == 0));
+	ft_putstr("With 3 elems list:\n");
+	result = ft_list_at(list, 3);
+	ft_putstr("Returns NULL pointer: ");
+	ft_putnbr(result == 0);
 	ft_putchar('\n');
-	ft_putnbr((list2 == 0));
-	ft_putchar('\n');
-	ft_putnbr((list3 == 0));
-	ft_putchar('\n');
-	
-	ft_list_clear(listptr);
-
-	ft_putstr("After list clear:\n");
-	ft_putstr("Adresses point to NULL elements: \n");
-	ft_putnbr((list1 == 0));
-	ft_putchar('\n');
-	ft_putnbr((list2 == 0));
-	ft_putchar('\n');
-	ft_putnbr((list3 == 0));
-	ft_putchar('\n');
-
-	ft_putnbr(listptr == 0);
+	ft_putstr("Returns: ");
+	ft_putnbr(*(int *)(result->data));
 	
 	/*
 	ft_putchar('\n');
