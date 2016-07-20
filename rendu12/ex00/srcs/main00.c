@@ -1,24 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_list.h                                          :+:      :+:    :+:   */
+/*   main00.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lmeyer <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/07/19 09:53:52 by lmeyer            #+#    #+#             */
-/*   Updated: 2016/07/19 23:53:02 by lmeyer           ###   ########.fr       */
+/*   Created: 2016/07/20 10:24:57 by lmeyer            #+#    #+#             */
+/*   Updated: 2016/07/20 19:12:25 by lmeyer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_LIST_H
-# define FT_LIST_H
+#include "ft_display_file.h"
 
-# include <stdlib.h>
-
-typedef struct		s_list
+int		main(int argc, char **argv)
 {
-	struct s_list	*next;
-	void			*data;
-}					t_list;
-
-#endif
+	if (argc == 1)
+		ft_put_error("File name missing.\n");
+	else if (argc > 2)
+		ft_put_error("Too many arguments.\n");
+	else
+		ft_display_file(argv[1]);
+	return (0);
+}

@@ -1,24 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_list.h                                          :+:      :+:    :+:   */
+/*   ft_put_error.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lmeyer <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/07/19 09:53:52 by lmeyer            #+#    #+#             */
-/*   Updated: 2016/07/19 23:53:02 by lmeyer           ###   ########.fr       */
+/*   Created: 2016/07/20 15:54:09 by lmeyer            #+#    #+#             */
+/*   Updated: 2016/07/20 18:25:06 by lmeyer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_LIST_H
-# define FT_LIST_H
+#include "ft_display_file.h"
 
-# include <stdlib.h>
-
-typedef struct		s_list
+void	ft_put_error(char *str)
 {
-	struct s_list	*next;
-	void			*data;
-}					t_list;
+	int i;
 
-#endif
+	i = 0;
+	while (str[i] != '\0')
+	{
+		write (2, &str[i], 1);
+		i++;
+	}
+}

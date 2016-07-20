@@ -1,0 +1,74 @@
+FILE DESCRIPTOR
+Quand on demande au systeme d'ouvrir un fichier, il nous renvoie un file descriptor, qui est un entier.
+Le systeme garde ne memoire une sorte de table, qui associe chaque file descriptor ouvert d'un processus.
+
+Dans ft_putchar, le premier parametre est un file descriptor:
+0 est STDIN (entrée standard, souvent clavier)
+1 est STDOUT (sortie standard)
+2 est STDERR (sortie d'erreur)
+
+
+
+
+OUVRIR UN FICHIER
+Se fait avec l'appel systeme open, avec:
+- le fichier a ouvrir
+- le mode d'ouverture
+- (les permissions en cas de creation ou modification de fichier)
+
+En cas de retour de -1 : erreur
+
+Les flags :
+- O_RDONLY lecture seule
+- O_WRONLY ercriture seule
+- O_RDWR lecture et ecriture
+
+- O_CREAT : si le fichier n'existe pas, le creer
+- O_TRUNC : si le fichier existe, ecrire depuis le premier octet
+- O_APPEND : si le fichier n'existe pas, ecrire depuis le dernier octet.
+
+Les flags peuvent etre additionnes avec un OU binaire.
+
+fd = open("42", O_WRONLY | O_CREAT, S_IRUSR | S_IWUSR);
+
+Cree un fichier 42, en ecriture seulement, de le creer, de donner les droits d'ecriture et de lecture)
+
+Bien verifier que les file descriptors renvoyes sont differents de -1.
+
+Pour fermer le fichier : appel systeme close, un seul parametre : le file desctriptor. 0 sit out s'est bien passé et -1 en erreur.
+
+
+
+
+ECRIRE DANS UN FILEDESCRIPTOR
+
+Se fait avec l'appel systeme write :
+- le filedescriptor
+- ce qu'il faut ecrire
+- le nombre d'octets a ecrire
+Renvoie le nombre d'octects ecrits ou -1
+
+
+LIRE DEPUIS UN FILEDESCRIPTOR
+
+Avec l'appel systeme read:
+- filedescriptor
+- le buffer de destination
+- le nombre d'octets a lire.
+Renvoie le nombre d'octets lus ou -1.
+Read renvoie 0 quand il arrive en fin de fichier.
+
+
+
+LES OFFSETS
+
+Lorsqu'on fait des operations sur un filedescriptor et qu'on ne le ferme pas, il y a une sorte de tete de lecture qui pointe sur l'octet en cours.
+Offset est la difference entre l'octet en cours et le premier octet.
+Pour deplacer l'offset dans un fichier, appel systeme lseek:
+- filedescriptor
+- offset de resultat ou de calcul
+- mode de calcul du nouvel offset (regarder dans le man)
+Retourne le nouvel offset ou -1.
+
+
+

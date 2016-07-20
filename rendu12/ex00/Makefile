@@ -5,38 +5,37 @@
 #                                                     +:+ +:+         +:+      #
 #    By: lmeyer <marvin@42.fr>                      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2016/07/18 11:24:58 by lmeyer            #+#    #+#              #
-#    Updated: 2016/07/20 10:52:59 by lmeyer           ###   ########.fr        #
+#    Created: 2016/07/20 10:24:42 by lmeyer            #+#    #+#              #
+#    Updated: 2016/07/20 18:18:42 by lmeyer           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-SHELL = /bin/sh
+NAME = ft_display_file
 
-SOURCE =  srcs
+CC = gcc
 
-HEADERS = includes
+CFLAGS = -Wall -Wextra -Werror
 
-vpath %.h $(HEADERS)
+DIR_SRC = ./srcs/
 
-vpath %.c $(SOURCE)
+DIR_INC = includes
 
-NAME = libft.a
+SOURCES = main00.c ft_display_file.c ft_put_error.c
 
-OBJECTS = ft_putchar.o ft_putstr.o ft_strcmp.o ft_strlen.o ft_swap.o
+OBJECTS = $(SOURCES:.c=.o)
 
-.PHONY : all
+INCLUDES = ft_display_file.h
 
 all : $(NAME)
 
-$(NAME) : $(OBJECTS) 
-	ar rc $(NAME) $(OBJECTS)
+$(NAME) : $(OBJECTS)
+	$(CC) -o $(NAME) $(OBJECTS)
 
-$(OBJECTS) : ft.h
+$(OBJECTS) :
+	$(CC) -c $(SOURCES:%.c=$(DIR_SRC)%.c) -I $(DIR_INC)
 
-clean:
+clean :
 	rm -f $(OBJECTS)
 
-fclean: clean
+fclean : clean
 	rm -f $(NAME)
-
-re: fclean all

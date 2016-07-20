@@ -1,24 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_list.h                                          :+:      :+:    :+:   */
+/*   ft_list_clear.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lmeyer <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/07/19 09:53:52 by lmeyer            #+#    #+#             */
-/*   Updated: 2016/07/19 23:53:02 by lmeyer           ###   ########.fr       */
+/*   Created: 2016/07/19 23:54:36 by lmeyer            #+#    #+#             */
+/*   Updated: 2016/07/20 00:22:28 by lmeyer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_LIST_H
-# define FT_LIST_H
-
-# include <stdlib.h>
-
-typedef struct		s_list
+void	ft_list_clear(t_list **begin_list)
 {
-	struct s_list	*next;
-	void			*data;
-}					t_list;
+	t_list	*next_elem;
+	t_list	*current_elem;
 
-#endif
+	if (begin_list == 0 || *begin_list == 0)
+		return ;
+	current_elem = *begin_list;
+	while (current_elem->next != 0)
+	{
+		next_elem = current_elem->next;
+		free(current_elem);
+		current_elem = next_elem;
+	}
+	free(current_elem);
+	begin_list = 0;
+}

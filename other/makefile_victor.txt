@@ -1,0 +1,74 @@
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    Makefile                                           :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: vfour <marvin@42.fr>                       +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2016/07/18 11:19:49 by vfour             #+#    #+#              #
+#    Updated: 2016/07/19 13:08:46 by vfour            ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
+
+NAME		=	do-op	
+NAME_LIB	=	lib/libft.a
+CC			=	clang
+
+DIR_LIB		=	./lib/
+SRC_LIB		=	$(DIR_LIB)ft_atoi.c			\
+				$(DIR_LIB)ft_putstr.c		\
+				$(DIR_LIB)ft_putchar.c		\
+				$(DIR_LIB)ft_putnbr.c		\
+				$(DIR_LIB)ft_strlen.c		\
+				$(DIR_LIB)ft_truc.c
+
+DIR_SRC		=	./src/
+SRC			=	$(DIR_SRC)main.c			\
+				$(DIR_SRC)ft_doop_operators.c
+
+
+OBJS_LIB	=	$(SRC_LIB:.c=.o)
+DEPS_LIB	=	$(SRC_LIB:.c=.d)
+
+OBJS		=	$(SRC:.c=.o)
+DEPS		=	$(SRC:.c=.d)
+
+INCLUDE		=	./include
+
+CFLAGS		+= -I$(INCLUDE)
+CFLAGS		+=	-Wall -Wextra
+
+AR			= ar rc
+
+RM			= rm -f
+
+RANLIB		= ranlib
+
+all			:	$(NAME_LIB) $(NAME)
+
+$(NAME)		:	$(OBJS)
+	$(CC) -o $(NAME) -lft -Llib $(OBJS)
+
+$(NAME_LIB)	:	$(OBJS_LIB)
+	$(AR) $(NAME_LIB) $(OBJS_LIB)
+	$(RANLIB) $(NAME_LIB)
+
+%.o			:	%.c
+	$(CC) -MMD -o $@ -c $< $(CFLAGS)
+	$(CC) -o $@ -c $< $(CFLAGS)
+
+clean		:
+	$(RM) $(OBJS) $(DEPS)
+	$(RM) $(OBJS_LIB) $(DEPS_LIB)
+
+fclean		:	clean
+	$(RM) $(NAME)
+	$(RM) $(NAME_LIB)
+	$(RM) -r **/*~ *~
+
+re			:	fclean all
+
+.PHONY		: all clean fclean re
+
+-include $(DEPS)
+-include $(DEPS_LIB)
