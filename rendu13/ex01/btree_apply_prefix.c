@@ -1,28 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_list_push_back.c                                :+:      :+:    :+:   */
+/*   btree_apply_prefix.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lmeyer <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/07/19 12:23:31 by lmeyer            #+#    #+#             */
-/*   Updated: 2016/07/21 19:07:08 by lmeyer           ###   ########.fr       */
+/*   Created: 2016/07/21 13:51:54 by lmeyer            #+#    #+#             */
+/*   Updated: 2016/07/21 23:39:07 by lmeyer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_list.h"
+#include "ft_btree.h"
 
-void	ft_list_push_back(t_list **begin_list, void *data)
+void	btree_apply_prefix(t_btree *root, void (*applyf)(void *))
 {
-	t_list	*new_elem;
-	t_list	*end_list;
-
-	new_elem = ft_create_elem(data);
-	if (new_elem)
+	if (applyf && root)
 	{
-		end_list = *begin_list;
-		while (end_list->next != NULL)
-			end_list = end_list->next;
-		end_list->next = new_elem;
+		applyf(root);
+		if (root->left)
+			btree_apply_prefix(root->left, applyf);
+		if (root->right)
+			btree_apply_prefix(root->right, applyf);
 	}
 }

@@ -1,0 +1,81 @@
+UTILISATION DES ARBRES BINAIRES
+
+C'est une structure de donnees similaire aux listes chainees mais qui a deux elements suivants : right et left.
+A droite, on a les elements superieurs ou egaux, et a gauche les elements inferieurs.
+L'avantage c'est de retrouver des donnees beaucoup plus rapidement.
+
+En C, voila une version un peu evoluee d'un arbre binaire (car avec un parent)
+
+typedef struct		s_btree
+{
+	struct s_btree	*parent;
+	struct s_btree	*right;
+	struct s_btree	*left;
+	void			*data;
+}					t_btree;
+
+Premier type de parcours : en profondeur (infix)
+1- je parcours a gauche
+2- je parcours moi-meme
+3- je parcours a droite
+
+Autre parcours : prefix (on s'affiche avant).
+Le suffixe : on s'affiche apres.
+
+
+Le parcours en largeur :
+- lire moi-meme
+- puis mes fils
+- puis les fils de mes fils
+(par etages)
+(plus difficile a implementer en C)
+
+Pour le parours en profondeur on utilise un DFS.
+En largeur : un BFS.
+(voir ce que c'est)
+
+Pour inserer des valeurs, on utilise la dichotomie.
+Mais attention, on peut finir avec un peigne plutot qu'un arbre.
+
+
+
+
+EQUILIBRAGE DES ARBRES BINAIRES
+
+Deux soucis : assez dur a equilibrer, et plus long a l'insertion et la suppression.
+Du coup on utilise les arbres rouges et noirs : en plus des elements precedents, on a aussi une enum qui prend la couleur de l'arbre.
+
+typedef struct		s_btree
+{
+	struct s_btree	*parent;
+	struct s_btree	*right;
+	struct s_btree	*left;
+	void			*data;
+	enum e_rb_color	color;
+}					t_rb_node;
+
+
+L'enum en question :
+enum	e_rb_color
+	{
+		RB_BLACK,
+		RB_RED
+	}
+
+un avantage d'avoir une structure quasiment identique est de pouvoir dire au compilateur qu'un rouge noir est un btree norma, on va pouvoir reutiliser toutes les fonctions (c'est ce qu'on appelle du polymorphisme).
+
+Plusieurs proprietes des arbres rb :
+- le noeud parent (root de l'arbre) est noir
+- toutes les feuilles, y compris les vides, sont noires aussi.
+- un noeud rouge a uniquement de fils noirs.
+- depuis n'importe quel noeud noir, le nombre de noeuds noirs parcourus entre ce noeud la et une des feuilles est la meme pour toutes les feuilles de ce noeud la. (l'arbre est equilibre)
+
+Comme pout un btree standard, on commence par une dichotomie.
+(par defaut tous les noeuds sont rouges)
+
+Sur l'exemple :
+L'arbre n'etait pas equilibre, (un rouge avait un fils rouge), on fait une rotation : le grand pere prend la place de l'oncle etc.
+Mais ainsi le root n'est plus noir : on fait donc une inversion de couleur
+
+Conseil :
+Creer une fonctinon qui affiche l'arbre, meme les noeuds nuls

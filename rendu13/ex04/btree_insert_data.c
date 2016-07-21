@@ -1,28 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_list_push_back.c                                :+:      :+:    :+:   */
+/*   btree_insert_data.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lmeyer <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/07/19 12:23:31 by lmeyer            #+#    #+#             */
-/*   Updated: 2016/07/21 19:07:08 by lmeyer           ###   ########.fr       */
+/*   Created: 2016/07/21 23:52:07 by lmeyer            #+#    #+#             */
+/*   Updated: 2016/07/22 01:03:39 by lmeyer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_list.h"
+#include "ft_btree.h"
 
-void	ft_list_push_back(t_list **begin_list, void *data)
+void	btree_insert_data(t_btree **root, void *item,
+		int (*cmpf)(void *, void *))
 {
-	t_list	*new_elem;
-	t_list	*end_list;
-
-	new_elem = ft_create_elem(data);
-	if (new_elem)
-	{
-		end_list = *begin_list;
-		while (end_list->next != NULL)
-			end_list = end_list->next;
-		end_list->next = new_elem;
-	}
+	if (root->left == 0 && (cmpf(item, root->left) < 0))
+		root->left = btree_create_node(item);
+	else if (root->right == 0 && (cmpf(item, root->right) >=0))
+		root->right = btree_create_node(item);
+	else if (cmpf(item, root->left) < 0)
+		
 }

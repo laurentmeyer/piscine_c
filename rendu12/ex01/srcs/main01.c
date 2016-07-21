@@ -1,28 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_list_push_back.c                                :+:      :+:    :+:   */
+/*   main01.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lmeyer <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/07/19 12:23:31 by lmeyer            #+#    #+#             */
-/*   Updated: 2016/07/21 19:07:08 by lmeyer           ###   ########.fr       */
+/*   Created: 2016/07/21 19:24:35 by lmeyer            #+#    #+#             */
+/*   Updated: 2016/07/21 19:24:49 by lmeyer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_list.h"
+#include "ft_cat.h"
 
-void	ft_list_push_back(t_list **begin_list, void *data)
+int		main(int argc, char **argv)
 {
-	t_list	*new_elem;
-	t_list	*end_list;
-
-	new_elem = ft_create_elem(data);
-	if (new_elem)
-	{
-		end_list = *begin_list;
-		while (end_list->next != NULL)
-			end_list = end_list->next;
-		end_list->next = new_elem;
-	}
+	if (argc == 1)
+		ft_put_error("File name missing.\n");
+	else if (argc > 2)
+		ft_put_error("Too many arguments.\n");
+	else
+		ft_display_file(argv[1]);
+	return (0);
 }

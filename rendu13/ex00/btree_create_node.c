@@ -1,28 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_list_push_back.c                                :+:      :+:    :+:   */
+/*   btree_create_node.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lmeyer <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/07/19 12:23:31 by lmeyer            #+#    #+#             */
-/*   Updated: 2016/07/21 19:07:08 by lmeyer           ###   ########.fr       */
+/*   Created: 2016/07/21 11:24:30 by lmeyer            #+#    #+#             */
+/*   Updated: 2016/07/21 22:14:28 by lmeyer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_list.h"
+#include "ft_btree.h"
 
-void	ft_list_push_back(t_list **begin_list, void *data)
+t_btree		*btree_create_node(void *item)
 {
-	t_list	*new_elem;
-	t_list	*end_list;
+	t_btree		*new_node;
 
-	new_elem = ft_create_elem(data);
-	if (new_elem)
+	new_node = (t_btree *)malloc(sizeof(t_btree));
+	if (new_node)
 	{
-		end_list = *begin_list;
-		while (end_list->next != NULL)
-			end_list = end_list->next;
-		end_list->next = new_elem;
+		new_node->left = 0;
+		new_node->right = 0;
+		new_node->item = item;
 	}
+	return (new_node);
 }
