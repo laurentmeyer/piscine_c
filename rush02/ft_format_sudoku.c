@@ -1,48 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_valid_input.c                                   :+:      :+:    :+:   */
+/*   ft_format_sudoku.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lmeyer <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/07/23 13:28:26 by lmeyer            #+#    #+#             */
-/*   Updated: 2016/07/24 00:17:01 by lmeyer           ###   ########.fr       */
+/*   Created: 2016/07/23 23:05:40 by lmeyer            #+#    #+#             */
+/*   Updated: 2016/07/23 23:18:45 by lmeyer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_rush.h"
 
-int		ft_count_l(char *str)
+char	*ft_format_sudoku(char *str)
 {
-	int i;
-	int acc;
+	int		i;
+	int		j;
+	char	*result;
 
 	i = 0;
-	acc = 0;
+	j = 0;
+	result = (char *)malloc(ft_strlen(str) * sizeof(char));
 	while (str[i] != '\0')
 	{
-		if (str[i] == '\n')
-			acc++;
-		i++;
+		if (str[i] == ' ' || str[j] == '\n')
+			i++;
+		else
+		{
+			result[j] = str[i];
+			i++;
+			j++;
+		}
 	}
-	return (acc);
-}
-
-int		ft_count_c(char *str)
-{
-	int i;
-
-	i = 0;
-	while (str[i] != '\n')
-	{
-		if (str[i] == '\0')
-			return (0);
-		i++;
-	}
-	return (i);
-}
-
-int		ft_valid_input(char *str)
-{
-	return ((ft_count_l(str) != 0) && (ft_count_c(str) != 0));
+	result[j] = '\0';
+	return (result);
 }

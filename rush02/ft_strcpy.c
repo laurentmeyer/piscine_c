@@ -1,29 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_number_lines.c                                  :+:      :+:    :+:   */
+/*   ft_strcpy.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lmeyer <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/07/23 13:14:29 by lmeyer            #+#    #+#             */
-/*   Updated: 2016/07/23 22:37:00 by lmeyer           ###   ########.fr       */
+/*   Created: 2016/07/11 17:26:51 by lmeyer            #+#    #+#             */
+/*   Updated: 2016/07/23 23:10:25 by lmeyer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_rush.h"
+#include "ft.h"
 
-int		ft_number_lines(char *str)
+char	*ft_strcpy(char *dest, char *src)
 {
-	int i;
-	int acc;
+	int		i;
 
 	i = 0;
-	acc = 0;
-	while (str[i] != '\0')
+	while (src[i] != '\0')
 	{
-		if (str[i] == '\n')
-			acc++;
+		dest[i] = src[i];
 		i++;
 	}
-	return (acc);
+	dest[i] = '\0';
+	return (dest);
 }

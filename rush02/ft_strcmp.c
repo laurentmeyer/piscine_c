@@ -1,48 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_valid_input.c                                   :+:      :+:    :+:   */
+/*   ft_strcmp.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lmeyer <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/07/23 13:28:26 by lmeyer            #+#    #+#             */
-/*   Updated: 2016/07/24 00:17:01 by lmeyer           ###   ########.fr       */
+/*   Created: 2016/07/12 18:12:18 by lmeyer            #+#    #+#             */
+/*   Updated: 2016/07/23 23:40:11 by lmeyer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_rush.h"
+#include "ft.h"
 
-int		ft_count_l(char *str)
+int		ft_strcmp(char *s1, char *s2)
 {
-	int i;
-	int acc;
-
-	i = 0;
-	acc = 0;
-	while (str[i] != '\0')
-	{
-		if (str[i] == '\n')
-			acc++;
-		i++;
-	}
-	return (acc);
-}
-
-int		ft_count_c(char *str)
-{
-	int i;
-
-	i = 0;
-	while (str[i] != '\n')
-	{
-		if (str[i] == '\0')
-			return (0);
-		i++;
-	}
-	return (i);
-}
-
-int		ft_valid_input(char *str)
-{
-	return ((ft_count_l(str) != 0) && (ft_count_c(str) != 0));
+	if (s1[0] != s2[0])
+		return (s1[0] - s2[0]);
+	else if (s1[0] == s2[0] && s1[0] == '\0')
+		return (0);
+	else
+		return ft_strcmp(s1 + 1, s2 + 1);
 }

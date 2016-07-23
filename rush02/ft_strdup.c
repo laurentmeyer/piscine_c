@@ -1,48 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_valid_input.c                                   :+:      :+:    :+:   */
+/*   ft_strdup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lmeyer <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/07/23 13:28:26 by lmeyer            #+#    #+#             */
-/*   Updated: 2016/07/24 00:17:01 by lmeyer           ###   ########.fr       */
+/*   Created: 2016/07/13 18:20:42 by lmeyer            #+#    #+#             */
+/*   Updated: 2016/07/23 23:30:00 by lmeyer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_rush.h"
+#include "ft.h"
 
-int		ft_count_l(char *str)
+char	*ft_strdup(char *src)
 {
-	int i;
-	int acc;
-
-	i = 0;
-	acc = 0;
-	while (str[i] != '\0')
-	{
-		if (str[i] == '\n')
-			acc++;
-		i++;
-	}
-	return (acc);
-}
-
-int		ft_count_c(char *str)
-{
-	int i;
-
-	i = 0;
-	while (str[i] != '\n')
-	{
-		if (str[i] == '\0')
-			return (0);
-		i++;
-	}
-	return (i);
-}
-
-int		ft_valid_input(char *str)
-{
-	return ((ft_count_l(str) != 0) && (ft_count_c(str) != 0));
+	if (src == NULL)
+		return (0);
+	return (ft_strcpy((char *)malloc(ft_strlen(src) + 1), src));
 }
