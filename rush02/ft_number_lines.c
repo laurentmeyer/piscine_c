@@ -6,11 +6,11 @@
 /*   By: lmeyer <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/07/23 13:14:29 by lmeyer            #+#    #+#             */
-/*   Updated: 2016/07/23 14:03:14 by lmeyer           ###   ########.fr       */
+/*   Updated: 2016/07/23 22:37:00 by lmeyer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "XXX"
+#include "ft_rush.h"
 
 int		ft_number_lines(char *str)
 {
@@ -25,5 +25,5 @@ int		ft_number_lines(char *str)
 			acc++;
 		i++;
 	}
-	return acc;
+	return (acc);
 }

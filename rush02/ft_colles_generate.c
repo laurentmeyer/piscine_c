@@ -6,31 +6,16 @@
 /*   By: lmeyer <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/07/23 21:28:50 by lmeyer            #+#    #+#             */
-/*   Updated: 2016/07/23 21:32:05 by lmeyer           ###   ########.fr       */
+/*   Updated: 2016/07/23 22:17:04 by lmeyer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_rush.h"
 
-void	ft_putchar(char	c);
+typedef	char	(*t_func)(int, int, int);
 
-void	ft_putstr(char *str)
+t_func			ft_what_colle(int i)
 {
-	int i;
-
-	i = 0;
-	while (str[i] != '\0')
-	{
-		ft_putchar(str[i]);
-		i++;
-	}
-}
-
-typedef char (*func)(int, int, int);
-
-func	ft_what_colle(int i)
-{
-
 	if (i == 0)
 		return (&ft_colle00_chars);
 	if (i == 1)
@@ -45,7 +30,7 @@ func	ft_what_colle(int i)
 		return (0);
 }
 
-char	*ft_colle0X(int cols, int lines, int colle)
+char			*ft_colle_x(int cols, int lines, int colle)
 {
 	int		i;
 	int		j;
@@ -70,10 +55,10 @@ char	*ft_colle0X(int cols, int lines, int colle)
 	return (str);
 }
 
-void	colle(int x, int y)
+void			colle(int x, int y)
 {
 	if (y < 1 || x < 1)
 		return ;
-	ft_putstr(ft_colle0X(x, y, 4));
+	ft_putstr(ft_colle_x(x, y, 4));
 	return ;
 }

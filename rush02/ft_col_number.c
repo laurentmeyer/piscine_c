@@ -6,11 +6,11 @@
 /*   By: lmeyer <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/07/23 13:20:09 by lmeyer            #+#    #+#             */
-/*   Updated: 2016/07/23 14:03:11 by lmeyer           ###   ########.fr       */
+/*   Updated: 2016/07/23 22:37:53 by lmeyer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "xxx"
+#include "ft_rush.h"
 
 int		ft_col_number(char *str)
 {

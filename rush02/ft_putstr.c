@@ -1,20 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_putstr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lmeyer <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/07/10 10:56:49 by lmeyer            #+#    #+#             */
-/*   Updated: 2016/07/23 22:28:43 by lmeyer           ###   ########.fr       */
+/*   Created: 2016/07/23 22:10:31 by lmeyer            #+#    #+#             */
+/*   Updated: 2016/07/23 22:10:59 by lmeyer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-void	colle(int a, int b);
-void	putchar(char c);
+#include "ft.h"
 
-int		main(void)
+void	ft_putstr(char *str)
 {
-	colle(1, 5);
-	return (0);
+	int i;
+
+	i = 0;
+	while (str[i] != '\0')
+	{
+		ft_putchar(str[i]);
+		i++;
+	}
 }

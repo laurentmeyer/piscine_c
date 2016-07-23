@@ -1,20 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft.h                                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lmeyer <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/07/10 10:56:49 by lmeyer            #+#    #+#             */
-/*   Updated: 2016/07/23 22:28:43 by lmeyer           ###   ########.fr       */
+/*   Created: 2016/07/23 22:09:05 by lmeyer            #+#    #+#             */
+/*   Updated: 2016/07/23 22:12:47 by lmeyer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-void	colle(int a, int b);
-void	putchar(char c);
+#ifndef FT_H
+# define FT_H
 
-int		main(void)
-{
-	colle(1, 5);
-	return (0);
-}
+void	ft_putchar(char	c);
+void	ft_putstr(char *str);
+
+#endif

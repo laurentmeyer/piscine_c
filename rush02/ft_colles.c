@@ -6,11 +6,11 @@
 /*   By: lmeyer <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/07/23 21:27:01 by lmeyer            #+#    #+#             */
-/*   Updated: 2016/07/23 21:27:03 by lmeyer           ###   ########.fr       */
+/*   Updated: 2016/07/23 22:17:53 by lmeyer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_colles.h"
+#include "ft_rush.h"
 
 char	ft_colle00_chars(int c, int cols, int lines)
 {
@@ -28,7 +28,6 @@ char	ft_colle00_chars(int c, int cols, int lines)
 		i = '\n';
 	return (i);
 }
-
 
 char	ft_colle01_chars(int c, int cols, int lines)
 {
@@ -49,7 +48,6 @@ char	ft_colle01_chars(int c, int cols, int lines)
 	return (i);
 }
 
-
 char	ft_colle02_chars(int c, int cols, int lines)
 {
 	char i;
@@ -67,7 +65,6 @@ char	ft_colle02_chars(int c, int cols, int lines)
 	return (i);
 }
 
-
 char	ft_colle03_chars(int c, int cols, int lines)
 {
 	char i;
@@ -84,7 +81,6 @@ char	ft_colle03_chars(int c, int cols, int lines)
 		i = '\n';
 	return (i);
 }
-
 
 char	ft_colle04_chars(int c, int cols, int lines)
 {
