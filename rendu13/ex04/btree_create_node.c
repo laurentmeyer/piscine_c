@@ -1,29 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_btree.h                                         :+:      :+:    :+:   */
+/*   btree_create_node.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lmeyer <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/07/21 11:01:46 by lmeyer            #+#    #+#             */
-/*   Updated: 2016/07/22 16:53:27 by lmeyer           ###   ########.fr       */
+/*   Created: 2016/07/21 11:24:30 by lmeyer            #+#    #+#             */
+/*   Updated: 2016/07/22 16:53:25 by lmeyer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_BTREE_H
-# define FT_BTREE_H
+#include "ft_btree.h"
 
-# include <stdlib.h>
-
-typedef struct			s_btree
+t_btree		*btree_create_node(void *item)
 {
-	struct s_btree		*left;
-	struct s_btree		*right;
-	void				*item;
-}						t_btree;
+	t_btree		*new_node;
 
-t_btree					*btree_create_node(void *item);
-void					btree_insert_data(t_btree **root, void *item,
-						int (*cmpf)(void *, void *));
-
-#endif
+	new_node = (t_btree *)malloc(sizeof(t_btree));
+	if (new_node)
+	{
+		new_node->left = 0;
+		new_node->right = 0;
+		new_node->item = item;
+	}
+	return (new_node);
+}
