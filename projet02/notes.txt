@@ -1,0 +1,24 @@
+De facon recursive :
+
+- prende en parametre l'adresse d'une string
+- copier la string initiale passée en parametre
+- parser la string pour trouver un couple de parentheses, qui ne contient plus de parentheses a l'interieur
+- si la string n'a plus de parentheses, on retourne la string
+
+
+
+Fonction pour resoudre une string sans parenthese :
+- trouver les operateurs par ordre de priorite, de gauche a droite : * / % - +
+- des qu'on en trouve un, on cherche le premier nombre a gauche (devient a) et le premier nombre a droite (devient b)
+- on garde en mémoire l'adresse du premier espace apres b.
+- la fonction retourne
+- lorsqu'il n'y a plus d'operateur, on retourne la string.
+
+Faire un tableau a double entrée avec le symbole des fonctions et le pointeur sur la fonction liée, triée par ordre de priorité décroissante.
+
+Il ne reste plus qu'a faire un atoi et de renvoyer le resultat.
+
+
+Tests = 
+
+"22 * -1 + 3"
