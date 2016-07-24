@@ -1,23 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_strncpy.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lmeyer <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/07/10 10:56:49 by lmeyer            #+#    #+#             */
-/*   Updated: 2016/07/24 15:31:58 by lmeyer           ###   ########.fr       */
+/*   Created: 2016/07/14 19:05:04 by lmeyer            #+#    #+#             */
+/*   Updated: 2016/07/14 22:46:14 by lmeyer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-void	colle(int a, int b);
-void	putchar(char c);
-int		ft_atoi(char *str);
-
-int		main(int ac, char **av)
+char	*ft_strncpy(char *dest, char *src, unsigned int n)
 {
-	if (ac != 3)
-		return(0);
-	colle(ft_atoi(av[1]), ft_atoi(av[2]));
-	return (0);
+	unsigned int a;
+
+	a = 0;
+	while (a != n && src[a])
+	{
+		dest[a] = src[a];
+		a++;
+	}
+	while (a != n)
+	{
+		dest[a] = 0;
+		a++;
+	}
+	return (dest);
 }

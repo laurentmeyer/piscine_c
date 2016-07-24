@@ -1,23 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_solve.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lmeyer <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/07/10 10:56:49 by lmeyer            #+#    #+#             */
-/*   Updated: 2016/07/24 15:31:58 by lmeyer           ###   ########.fr       */
+/*   Created: 2016/07/24 13:12:34 by lmeyer            #+#    #+#             */
+/*   Updated: 2016/07/24 13:23:34 by lmeyer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-void	colle(int a, int b);
-void	putchar(char c);
-int		ft_atoi(char *str);
+#include "ft_project.h"
 
-int		main(int ac, char **av)
+char	**ft_solve_arr(char **arr)
 {
-	if (ac != 3)
-		return(0);
-	colle(ft_atoi(av[1]), ft_atoi(av[2]));
-	return (0);
-}
+	char	**res;
+
+	if (arr[0] == 0)
+		return (0);
+	if (arr[1] == 0)
+		return (arr[1]);
+	

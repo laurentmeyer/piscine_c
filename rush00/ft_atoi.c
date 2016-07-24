@@ -1,37 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_solve_string.c                                  :+:      :+:    :+:   */
+/*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lmeyer <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/07/24 08:58:22 by lmeyer            #+#    #+#             */
-/*   Updated: 2016/07/24 12:42:00 by lmeyer           ###   ########.fr       */
+/*   Created: 2016/07/11 12:42:28 by lmeyer            #+#    #+#             */
+/*   Updated: 2016/07/24 15:31:13 by lmeyer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_project.h"
-
-/*
-t_oper		*ft_find_operation(char *str)
+int		ft_atoi(char *str)
 {
 	int		i;
-	int		j;
-	char	**symtable;
-	char	**decomp;
+	int		sign;
+	int		acc;
 
-	symtable = ft_create_symbol_table();
-	decomp = ft_split_whitespaces(str);
-	while (symtable[1][i] != 0)
+	i = 0;
+	sign = 1;
+	acc = 0;
+	while (str[i] == ' ' || (str[i] >= 7 && str[i] <= 13))
+		i++;
+	if (str[i] == '+')
+		i++;
+	if (str[i] == '-')
 	{
-		j = 0;
-		while (str[j] != '\0');
-		{
-			if (str[j] == symtable[i][i])
-				DO STUFF;
-			j++;
-		}
+		sign = -1;
 		i++;
 	}
-char	**ft_split_whitespaces(char *str);
-*/
+	while (str[i] >= '0' && str[i] <= '9' && str[i] != '\0')
+	{
+		acc = 10 * acc - (str[i] - '0');
+		i++;
+	}
+	return (-sign * acc);
+}
