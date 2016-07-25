@@ -1,31 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strncpy.c                                       :+:      :+:    :+:   */
+/*   ft.h                                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lmeyer <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/07/14 19:05:04 by lmeyer            #+#    #+#             */
-/*   Updated: 2016/07/24 19:03:50 by lmeyer           ###   ########.fr       */
+/*   Created: 2016/07/25 12:16:21 by lmeyer            #+#    #+#             */
+/*   Updated: 2016/07/25 12:18:09 by lmeyer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_rush.h"
+#ifndef FT_H
+# define FT_H
 
-char	*ft_strncpy(char *dest, char *src, unsigned int n)
-{
-	unsigned int a;
+# include <unistd.h>
 
-	a = 0;
-	while (a != n && src[a])
-	{
-		dest[a] = src[a];
-		a++;
-	}
-	while (a != n)
-	{
-		dest[a] = 0;
-		a++;
-	}
-	return (dest);
-}
+void    ft_putchar(char c);
+void	ft_putstr(char *str);
+void	ft_putnbr(int nb);
+
+#endif

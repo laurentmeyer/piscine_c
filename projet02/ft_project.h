@@ -6,7 +6,7 @@
 /*   By: lmeyer <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/07/24 08:54:02 by lmeyer            #+#    #+#             */
-/*   Updated: 2016/07/24 12:40:38 by lmeyer           ###   ########.fr       */
+/*   Updated: 2016/07/24 21:14:10 by lmeyer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ typedef	int	(*t_oper)(int, int);
 
 void	ft_putchar(char c);
 void	ft_putstr(char *str);
+void	ft_putnbr(int nb);
 int		ft_multiply(int a, int b);
 int		ft_divide(int a, int b);
 int		ft_modulo(int a, int b);
@@ -31,5 +32,8 @@ int		ft_count_words(char *str);
 char	**ft_split_whitespaces(char *str);
 char	*ft_strndup(char *src, unsigned int n);
 char	**ft_split_symbols(char *str);
+int		ft_atoi(char *str);
+char	*ft_itoa(int n);
+char	**ft_solve_priority(char **arr);
 
 #endif

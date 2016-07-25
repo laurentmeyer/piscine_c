@@ -1,31 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strncpy.c                                       :+:      :+:    :+:   */
+/*   ft_putnbr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lmeyer <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/07/14 19:05:04 by lmeyer            #+#    #+#             */
-/*   Updated: 2016/07/24 19:03:50 by lmeyer           ###   ########.fr       */
+/*   Created: 2016/07/11 10:25:13 by lmeyer            #+#    #+#             */
+/*   Updated: 2016/07/25 12:16:10 by lmeyer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_rush.h"
+#include "ft.h"
 
-char	*ft_strncpy(char *dest, char *src, unsigned int n)
+void	ft_putnbr(int nb)
 {
-	unsigned int a;
-
-	a = 0;
-	while (a != n && src[a])
+	if (nb >= 0 && nb < 10)
+		ft_putchar(nb + '0');
+	else if (nb == -2147483648)
 	{
-		dest[a] = src[a];
-		a++;
+		ft_putnbr(-214748364);
+		ft_putchar('8');
 	}
-	while (a != n)
+	else if (nb < 0)
 	{
-		dest[a] = 0;
-		a++;
+		ft_putchar('-');
+		ft_putnbr(-nb);
 	}
-	return (dest);
+	else
+	{
+		ft_putnbr(nb / 10);
+		ft_putchar(nb % 10 + '0');
+	}
 }

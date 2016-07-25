@@ -1,31 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strncpy.c                                       :+:      :+:    :+:   */
+/*   ft_list.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lmeyer <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/07/14 19:05:04 by lmeyer            #+#    #+#             */
-/*   Updated: 2016/07/24 19:03:50 by lmeyer           ###   ########.fr       */
+/*   Created: 2016/07/19 09:53:52 by lmeyer            #+#    #+#             */
+/*   Updated: 2016/07/25 18:34:50 by lmeyer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_rush.h"
+#ifndef FT_LIST_H
+# define FT_LIST_H
 
-char	*ft_strncpy(char *dest, char *src, unsigned int n)
+# include <stdlib.h>
+
+typedef struct		s_list
 {
-	unsigned int a;
+	struct s_list	*next;
+	void			*data;
+}					t_list;
 
-	a = 0;
-	while (a != n && src[a])
-	{
-		dest[a] = src[a];
-		a++;
-	}
-	while (a != n)
-	{
-		dest[a] = 0;
-		a++;
-	}
-	return (dest);
-}
+t_list				*ft_create_elem(void *data);
+void				ft_list_push_back(t_list **begin_list, void *data);
+void				ft_list_replace(t_list **to_replace, t_list *new);
+
+#endif

@@ -6,7 +6,7 @@
 /*   By: lmeyer <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/07/24 09:44:50 by lmeyer            #+#    #+#             */
-/*   Updated: 2016/07/24 13:04:03 by lmeyer           ###   ########.fr       */
+/*   Updated: 2016/07/24 23:39:42 by lmeyer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,59 @@ int		ft_count_operators(char *s)
 		return (1 + ft_count_operators(s + ft_next_operator(s) + 1));
 }
 
-char	**ft_split_symbols(char *string)
+char	*ft_extract_symbols(char *str)
+{
+	char	*s;
+	int		t;
+	char	**res;
+	int		i;
+
+	s = ft_remove_whitespaces(str);
+	t = ft_count_operators(s);
+	res = (char *)malloc((t + 1) * sizeof(char));
+	if (res)
+	{
+		i = 0;
+		while (i < t)
+		{
+			res[i] = s[ft_next_operator(s)];
+			s = s + ft_next_operator(s);
+			i++;
+		}
+		res[i] = 0;
+	}
+	return (res);
+}
+
+
+char	*ft_extract_ints(char str)
+{
+	char	*s;
+	int		t;
+	char	**res;
+	int		i;
+
+	s = ft_remove_whitespaces(str);
+	t = ft_count_operators(s);
+	res = (char *)malloc((t + 1) * sizeof(char));
+	if (res)
+	{
+		i = 0;
+		while (i < t)
+		{
+			res[i] = s[ft_next_operator(s)];
+			s = s + ft_next_operator(s);
+			i++;
+		}
+		res[i] = 0;
+	}
+	return (res);
+}
+
+
+
+
+char	***ft_split_symbols(char *string)
 {
 	char	**result;
 	int		elements;
@@ -77,7 +129,7 @@ char	**ft_split_symbols(char *string)
 
 	str = ft_remove_whitespaces(string);
 	elements = 2 * ft_count_operators(str);
-	result = (char **)malloc((elements + 2) * sizeof(char));
+	result = (char **)malloc((elements + 2) * sizeof(char *));
 	if (result)
 	{
 		i = 0;
