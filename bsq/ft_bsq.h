@@ -6,7 +6,7 @@
 /*   By: lmeyer <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/07/25 11:52:56 by lmeyer            #+#    #+#             */
-/*   Updated: 2016/07/25 20:43:59 by lmeyer           ###   ########.fr       */
+/*   Updated: 2016/07/26 11:39:19 by lmeyer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ typedef	struct	s_point
 
 typedef struct	s_rect
 {
-	t_point		*start;
+	t_point		*origin;
 	int			height;
 	int			width;
 }				t_rect;
@@ -40,12 +40,15 @@ typedef struct	s_map
 }				t_map;
 
 t_point			*ft_new_pt(int x, int y);
-t_rect			*ft_new_rect(t_point *start, int h, int w);
+t_rect			*ft_new_rect(t_point *origin, int h, int w);
 void			ft_print_rect_details(t_rect *rect);
 void			ft_print_rect_list(t_list *list);
 t_point			*ft_new_pt(int x, int y);
 void			ft_print_point(t_point *point);
 int				ft_point_in_rec(t_rect *rect, t_point *pt);
-
+t_rect			*ft_split_left(t_rect *rect, t_point *pt);
+t_rect			*ft_split_right(t_rect *rect, t_point *pt);
+t_rect			*ft_split_up(t_rect *rect, t_point *pt);
+t_rect			*ft_split_down(t_rect *rect, t_point *pt);
 
 #endif

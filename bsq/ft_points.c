@@ -6,7 +6,7 @@
 /*   By: lmeyer <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/07/25 15:26:50 by lmeyer            #+#    #+#             */
-/*   Updated: 2016/07/25 20:44:01 by lmeyer           ###   ########.fr       */
+/*   Updated: 2016/07/26 11:26:23 by lmeyer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,13 +40,13 @@ void		ft_print_point(t_point *point)
 
 int			ft_point_in_rec(t_rect *rect, t_point *pt)
 {
-	t_point	*start;
+	t_point	*origin;
 
 	if (!rect || !pt)
 		return (0);
-	start = rect->start;
-	if (start->x <= pt->x && (start->x + rect->width) > pt->x
-			&& start->y <= pt->y && (start->y + rect->height) > pt->y)
+	origin = rect->origin;
+	if (origin->x <= pt->x + 1 && (origin->x + rect->width) > pt->x
+			&& origin->y <= pt->y && (origin->y + rect->height) > pt->y)
 		return(1);
 	else
 		return (0);
