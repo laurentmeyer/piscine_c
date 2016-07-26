@@ -6,7 +6,7 @@
 /*   By: lmeyer <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/07/25 11:52:56 by lmeyer            #+#    #+#             */
-/*   Updated: 2016/07/26 11:39:19 by lmeyer           ###   ########.fr       */
+/*   Updated: 2016/07/26 20:18:39 by lmeyer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,5 +50,8 @@ t_rect			*ft_split_left(t_rect *rect, t_point *pt);
 t_rect			*ft_split_right(t_rect *rect, t_point *pt);
 t_rect			*ft_split_up(t_rect *rect, t_point *pt);
 t_rect			*ft_split_down(t_rect *rect, t_point *pt);
+void			ft_update_link(t_list **to_replace, t_point *pt);
+void			ft_update_reclist(t_list **listptr, t_point *pt);
+void			ft_push_back_ifne(t_list **begin_list, void *data);
 
 #endif

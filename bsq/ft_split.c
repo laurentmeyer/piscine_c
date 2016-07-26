@@ -6,7 +6,7 @@
 /*   By: lmeyer <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/07/26 09:21:18 by lmeyer            #+#    #+#             */
-/*   Updated: 2016/07/26 11:54:56 by lmeyer           ###   ########.fr       */
+/*   Updated: 2016/07/26 12:37:24 by lmeyer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ t_rect		*ft_split_down(t_rect *rect, t_point *pt)
 	if (rect->height < 2 || pt->x == origin->y + rect->height - 1)
 		return (0);
 	return (ft_new_rect(ft_new_pt(origin->x, pt->y + 1),
-		   rect->width, origin->y + rect->height - pt->y - 1));
+		   rect->width, rect->height - (pt->y - origin->y + 1)));
 }
 
 t_rect		*ft_split_up(t_rect *rect, t_point *pt)
