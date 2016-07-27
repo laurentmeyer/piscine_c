@@ -6,7 +6,7 @@
 /*   By: lmeyer <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/07/25 15:26:50 by lmeyer            #+#    #+#             */
-/*   Updated: 2016/07/26 12:53:12 by lmeyer           ###   ########.fr       */
+/*   Updated: 2016/07/27 16:23:06 by lmeyer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,8 +45,10 @@ int			ft_point_in_rec(t_rect *rect, t_point *pt)
 	if (!rect || !pt)
 		return (0);
 	origin = rect->origin;
-	if (origin->x <= pt->x && (origin->x + rect->width) > pt->x
-			&& origin->y <= pt->y && (origin->y + rect->height) > pt->y)
+	if (origin->x <= pt->x
+			&& (origin->x + rect->width) > pt->x
+			&& origin->y <= pt->y
+			&& (origin->y + rect->height) > pt->y)
 		return(1);
 	else
 		return (0);
