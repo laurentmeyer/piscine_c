@@ -6,7 +6,7 @@
 /*   By: lmeyer <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/07/19 09:53:52 by lmeyer            #+#    #+#             */
-/*   Updated: 2016/07/27 09:54:01 by lmeyer           ###   ########.fr       */
+/*   Updated: 2016/07/27 19:27:17 by lmeyer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,5 +26,6 @@ void				ft_list_push_back(t_list **begin_list, void *data);
 void				ft_list_replace(t_list **to_replace, t_list *new);
 int					ft_list_length(t_list *list);
 void				ft_push_back_ifne(t_list **begin_list, void *data);
+int					ft_list_size(t_list **begin_list);
 
 #endif

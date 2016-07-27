@@ -6,15 +6,35 @@
 /*   By: lmeyer <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/07/25 11:47:13 by lmeyer            #+#    #+#             */
-/*   Updated: 2016/07/27 16:36:50 by lmeyer           ###   ########.fr       */
+/*   Updated: 2016/07/27 19:53:48 by lmeyer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_bsq.h"
 
-int main(void)
+int     main(int argc, char **argv)
 {
-	
+	t_map   *map;
+	t_list	*rec_list;
+	t_rect	*biggest;
+
+	(void)argc;
+	(void)argv;
+	map = (t_map*)malloc(sizeof(t_map));
+	if (argc < 2)
+	{
+		ft_read_map(&map);
+		ft_putstr("\nCOUCOU\n");
+		ft_print_pt_list(map->obst_list);
+		rec_list = 0;
+		ft_list_push_back(&rec_list, ft_new_rect(ft_new_pt(0, 0), map->width, map->height));
+		ft_update_all(&rec_list, map->obst_list);
+		biggest = ft_biggest_square(rec_list);
+		ft_print_rect_details(biggest);
+		ft_print_result(biggest, map);
+	}
+		
+
 	/*
 	rec_list = 0;
 	ft_list_push_back(&rec_list, ft_new_rect(ft_new_pt(2, 7), 2, 3));
@@ -87,6 +107,7 @@ int main(void)
 	*/
 	
 	
+	/*
 	ft_putstr("\nTEST DE UPDATE ALL\n");
 	t_list	*pt_list;
 	t_list	*rec_list;
@@ -115,6 +136,7 @@ int main(void)
 	ft_print_rect_list(rec_list);
 	ft_putstr("\n===============\n");
 	ft_print_rect_details(ft_biggest_square(rec_list));
+	*/
 
 
 

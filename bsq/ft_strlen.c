@@ -1,22 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft.h                                               :+:      :+:    :+:   */
+/*   ft_strlen.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lmeyer <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/07/25 12:16:21 by lmeyer            #+#    #+#             */
-/*   Updated: 2016/07/27 18:55:45 by lmeyer           ###   ########.fr       */
+/*   Created: 2016/07/08 11:36:49 by lmeyer            #+#    #+#             */
+/*   Updated: 2016/07/27 18:38:41 by lmeyer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_H
-# define FT_H
+int		ft_strlen(char *str)
+{
+	int i;
 
-# include <unistd.h>
-
-void	ft_putchar(char c);
-void	ft_putstr(char *str);
-void	ft_putnbr(int nb);
-
-#endif
+	i = 0;
+	while (*str != 0)
+	{
+		i++;
+		str++;
+	}
+	return (i);
+}

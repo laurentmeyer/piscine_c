@@ -6,7 +6,7 @@
 /*   By: lmeyer <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/07/26 22:13:51 by lmeyer            #+#    #+#             */
-/*   Updated: 2016/07/27 12:05:23 by lmeyer           ###   ########.fr       */
+/*   Updated: 2016/07/27 19:02:35 by lmeyer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,21 +27,18 @@ t_rect		*ft_biggest_square(t_list *rec_list)
 	t_point	*pt;
 
 	side = 0;
-	pt = ft_new_pt(0,0);
-	while(rec_list)
+	pt = ft_new_pt(0, 0);
+	while (rec_list)
 	{
 		tmp = (t_rect *)(rec_list->data);
 		if (ft_min(tmp->height, tmp->width) > side)
 		{
 			side = ft_min(tmp->height, tmp->width);
-			pt->x = tmp->origin->x;
-			pt->y = tmp->origin->y;
+			pt = tmp->origin;
 		}
-		else if (ft_min(tmp->height, tmp->width) == side && tmp->origin->y < pt->y)
-		{
-			pt->x = tmp->origin->x;
-			pt->y = tmp->origin->y;
-		}
+		else if (ft_min(tmp->height, tmp->width) == side
+				&& tmp->origin->y < pt->y)
+			pt = tmp->origin;
 		else if (ft_min(tmp->height, tmp->width) == side
 				&& tmp->origin->y == pt->y && tmp->origin->x < pt->x)
 			pt->x = tmp->origin->x;
