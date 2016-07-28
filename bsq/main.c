@@ -6,7 +6,7 @@
 /*   By: lmeyer <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/07/25 11:47:13 by lmeyer            #+#    #+#             */
-/*   Updated: 2016/07/27 19:53:48 by lmeyer           ###   ########.fr       */
+/*   Updated: 2016/07/27 22:53:35 by lmeyer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,18 +20,26 @@ int     main(int argc, char **argv)
 
 	(void)argc;
 	(void)argv;
-	map = (t_map*)malloc(sizeof(t_map));
 	if (argc < 2)
 	{
-		ft_read_map(&map);
-		ft_putstr("\nCOUCOU\n");
-		ft_print_pt_list(map->obst_list);
-		rec_list = 0;
+		map = ft_read_map();
+		ft_putstr("\nMAP READ OK\n");
+		ft_putnbr(map->height);
+//		ft_print_pt_list(map->obst_list);
+//		rec_list = (t_list *)malloc(sizeof(t_list));
+		rec_list = NULL;
 		ft_list_push_back(&rec_list, ft_new_rect(ft_new_pt(0, 0), map->width, map->height));
+		ft_putstr("\nREC LIST CREATED\n");
+		ft_print_pt_list(map->obst_list);
 		ft_update_all(&rec_list, map->obst_list);
+		ft_putstr("\nREC LIST UPDATED\n");
+		ft_print_rect_list(rec_list);
+		ft_putstr("\nYOUYOU\n");
 		biggest = ft_biggest_square(rec_list);
+		ft_putstr("\nCOUCOU\n");
 		ft_print_rect_details(biggest);
 		ft_print_result(biggest, map);
+		ft_putstr("\nCOUCOU\n");
 	}
 		
 

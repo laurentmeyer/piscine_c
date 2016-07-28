@@ -6,7 +6,7 @@
 /*   By: lmeyer <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/07/25 15:29:31 by lmeyer            #+#    #+#             */
-/*   Updated: 2016/07/27 19:53:50 by lmeyer           ###   ########.fr       */
+/*   Updated: 2016/07/27 22:53:31 by lmeyer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,8 +64,11 @@ void		ft_update_reclist(t_list **rect_list, t_point *pt)
 	ft_update_link(rect_list, pt);
 }
 
-void		ft_update_all(t_list **to_update, t_list *pt_begin)
+void		ft_update_all(t_list **to_update, t_list **pt_begin)
 {
+	t_list	*first;
+
+	kk
 	if (!pt_begin || !to_update)
 		return ;
 	if (pt_begin)

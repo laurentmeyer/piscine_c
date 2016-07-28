@@ -6,7 +6,7 @@
 /*   By: lmeyer <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/07/27 19:20:55 by lmeyer            #+#    #+#             */
-/*   Updated: 2016/07/27 19:28:31 by lmeyer           ###   ########.fr       */
+/*   Updated: 2016/07/27 22:53:37 by lmeyer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,25 +22,26 @@ char    *ft_first_line(char *str)
 	i = 0;
 	while(str[i] != '\n')
 		i++;
-	first_line = (char*)malloc(sizeof(char) * i);
-	i++;
-	i = 0;
-	while (str[i] != '\n')
+	first_line = (char*)malloc(sizeof(char) * (i + 1));
+	if (first_line)
 	{
-		first_line[i] = str[i];
-		i++;
+		i = 0;
+		while (str[i] != '\n')
+		{
+			first_line[i] = str[i];
+			i++;
+		}
+		first_line[i] = '\0';
 	}
-	first_line[i] = '\0';
 	return(first_line);
 }
 
 char    *ft_str_dup(char *str, int i)
 {
-	char *dup;
-	int     j;
+	char	*dup;
+	int		j;
 
 	j = 0;
-	dup = NULL;
 	dup = (char*)malloc(sizeof(char) * i);
 	if(dup)
 	{
@@ -61,11 +62,15 @@ char    *ft_str_append(t_list **list)
 	int     j;
 	char    *str;
 
-	str = (char*)malloc(sizeof(char*) * ft_list_size(list) * (BUF_SIZE + 1));
-	i = 0;
-	tmp = *list;
+	ft_putnbr(ft_list_size(list));
+//	ft_putstr("\n===YOYO===\n");
+//	ft_putstr(((char *)((*list)->data)));
+	str = (char*)malloc(sizeof(char) * ft_list_size(list) * (BUF_SIZE + 1));
+//	ft_putstr("\n===YOYO===\n");
 	if (str)
 	{
+		i = 0;
+		tmp = *list;
 		while (tmp)
 		{
 			j = 0;
@@ -207,69 +212,73 @@ char    ft_get_char(char *str, int k)
 		return (str[i + k - 1]);
 }
 
-void    ft_load_map(t_list **list, t_map **map)
+t_map		*ft_read_map(void)
 {
 	char    *str;
-
 	t_list  *points;
-	str = malloc(sizeof(char) * BUF_SIZE + 1);
-	while(read(0, str, BUF_SIZE))
-	{
-		str[BUF_SIZE + 1] = '\0';
-		ft_list_push_back(list, ft_str_dup(str, BUF_SIZE));
-		str = malloc(sizeof(char) * BUF_SIZE + 1);
-	}
-	ft_putstr("\n");
-	str = ft_str_append(list);
-	ft_putstr("\n");
-	ft_putstr(str);
-	ft_putstr("\nvoici la premiere ligne : ");
-	ft_putstr(ft_first_line(str));
-	ft_putstr("\nvoici les coordonnes des obstacles : \n");
-	points = ft_count_points(str, 'o');
-	ft_print_points(points);
-	ft_putstr("\nlargeur : ");
-	ft_putnbr(ft_check_width(str));
-	ft_putstr("\nhauteur : ");
-	ft_putnbr(ft_check_height(str));
-	ft_putstr("\nresultat du check de la validite des caracteres : ");
-	ft_putnbr(ft_check_chars(str, 'o', '.'));
-
-	(*map)->height = ft_check_height(str);
-	(*map)->width = ft_check_width(str);
-	(*map)->empt = ft_get_char(str, 1);
-	(*map)->obst = ft_get_char(str, 2);
-	(*map)->full = ft_get_char(str, 3);
-	(*map)->obst_list = ft_count_points(str, 2);
-}
-
-
-int     ft_read_map(t_map **map)
-{
 	t_list  *list;
+	t_map	*map;
 
-	ft_load_map(&list, map);
-	return (1);
+	list = 0;
+	points = 0;
+	map = (t_map *)malloc(sizeof(t_map));
+	if (!map)
+		return (0);
+	str = (char *)malloc(sizeof(char) * BUF_SIZE + 1);
+	if (str)
+	{
+		while(read(0, str, BUF_SIZE))
+		{
+			str[BUF_SIZE + 1] = '\0';
+			ft_list_push_back(&list, ft_str_dup(str, BUF_SIZE));
+			ft_putstr(str);
+			str = (char *)malloc(sizeof(char) * BUF_SIZE + 1);
+		}
+		ft_putstr("\n");
+		str = ft_str_append(&list);
+
+		ft_putstr("\n");
+		ft_putstr(str);
+		ft_putstr("\nvoici la premiere ligne : ");
+		ft_putstr(ft_first_line(str));
+		ft_putstr("\nvoici les coordonnes des obstacles : \n");
+		points = ft_count_points(str, 'o');
+		ft_print_points(points);
+		ft_putstr("\nlargeur : ");
+		ft_putnbr(ft_check_width(str));
+		ft_putstr("\nhauteur : ");
+		ft_putnbr(ft_check_height(str));
+		ft_putstr("\nresultat du check de la validite des caracteres : ");
+		ft_putnbr(ft_check_chars(str, 'o', '.'));
+
+		map->height = ft_check_height(str);
+		map->width = ft_check_width(str);
+		map->empt = ft_get_char(str, 1);
+		map->obst = ft_get_char(str, 2);
+		map->full = ft_get_char(str, 3);
+		map->obst_list = ft_count_points(str, 'o');
+	}
+	return (map);
 }
 
 /*
-int     main(int argc, char **argv)
-{
-	t_map   *map;
-	int     n;
+   int     main(int argc, char **argv)
+   {
+   t_map   *map;
+   int     n;
 
-	(void)argv;
-	map = (t_map*)malloc(sizeof(t_map));
-	if (argc < 2)
-	{
-		ft_read_map(&map);
-		return (0);
-	}
-	n = 1;
-	while (n < argc)
-	{
-		n++;
-	}
-	return (0);
-}
-*/
+   (void)argv;
+   map = (t_map*)malloc(sizeof(t_map));
+   if (argc < 2)
+   {
+   ft_read_map(&map);
+   return (0);
+   }
+   n = 1;
+   while (n < argc)
+   {
+   n++;
+   }
+   return (0);
+   }
+   */

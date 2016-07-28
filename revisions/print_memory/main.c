@@ -1,0 +1,11 @@
+#include <stdio.h>
+
+int     main(void)
+{
+	int     tab[10] = {0, 23, 150, 255,
+		12, 16,  21, 42};
+
+	printf("%p\n", tab);
+	//print_memory(tab, sizeof(tab));
+	return (0);
+}

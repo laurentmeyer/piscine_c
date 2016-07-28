@@ -6,7 +6,7 @@
 /*   By: lmeyer <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/07/26 22:13:51 by lmeyer            #+#    #+#             */
-/*   Updated: 2016/07/27 19:02:35 by lmeyer           ###   ########.fr       */
+/*   Updated: 2016/07/27 22:19:35 by lmeyer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,14 @@ int			ft_min(int a, int b)
 	else
 		return (b);
 }
+
+/*
+t_point		*ft_dup_point(t_point *pt)
+{
+	t_point *res;
+
+	res = ft_new_pt(pt->
+*/
 
 t_rect		*ft_biggest_square(t_list *rec_list)
 {
@@ -34,11 +42,11 @@ t_rect		*ft_biggest_square(t_list *rec_list)
 		if (ft_min(tmp->height, tmp->width) > side)
 		{
 			side = ft_min(tmp->height, tmp->width);
-			pt = tmp->origin;
+			pt = ft_new_pt(tmp->origin->x, tmp->origin->y);
 		}
 		else if (ft_min(tmp->height, tmp->width) == side
 				&& tmp->origin->y < pt->y)
-			pt = tmp->origin;
+			pt = ft_new_pt(tmp->origin->x, tmp->origin->y);
 		else if (ft_min(tmp->height, tmp->width) == side
 				&& tmp->origin->y == pt->y && tmp->origin->x < pt->x)
 			pt->x = tmp->origin->x;

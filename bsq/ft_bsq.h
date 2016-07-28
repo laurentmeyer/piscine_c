@@ -6,7 +6,7 @@
 /*   By: lmeyer <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/07/25 11:52:56 by lmeyer            #+#    #+#             */
-/*   Updated: 2016/07/27 19:53:53 by lmeyer           ###   ########.fr       */
+/*   Updated: 2016/07/27 21:38:29 by lmeyer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ typedef struct	s_map
 	t_list		*obst_list;
 }				t_map;
 
-int				ft_read_map(t_map **map);
+t_map			*ft_read_map(void);
 t_point			*ft_new_pt(int x, int y);
 t_rect			*ft_new_rect(t_point *origin, int h, int w);
 void			ft_print_rect_details(t_rect *rect);
