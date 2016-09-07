@@ -1,0 +1,13 @@
+Preprocesseur = phase avant la compilation
+Ce qui s'y rapporte est precede d'un diese
+Le prototype de write est dans un fichier unistd.h
+Entre chevrons = aller chercher dans le path qui est cherche automatiquement par le compilateur
+Le path peut etre modifie
+On peut aussi mettre comme path le dossier courant, en mettant entre guillemets
+La commande de preprocesseur s'appelle cpp
+C'est la bonne maniere de faire, le programme devient portatif
+On peut faire des include de tous types de fichiers mais il est conseille de ne faire que des points h
+
+
+L'avantage des include.h c'est d'éviter d'avoir des différences entre les declarations de include dans deux fichiers différents (ex entre le main et la fonction)
+Il faut mettre les prototypes des .c dans les .h, et inclure les .h dans les .c
