@@ -1,23 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putstr.c                                        :+:      :+:    :+:   */
+/*   ft_putchar.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lmeyer <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/07/11 09:58:27 by lmeyer            #+#    #+#             */
-/*   Updated: 2016/07/13 23:48:48 by lmeyer           ###   ########.fr       */
+/*   Created: 2016/07/12 19:50:59 by lmeyer            #+#    #+#             */
+/*   Updated: 2016/07/12 19:52:32 by lmeyer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
 
-int		ft_strlen(char *s);
-
-void	ft_putstr(char *str)
+void	ft_putchar(char c)
 {
-	if (str == 0)
-		return ;
-	write(1, s, ft_strlen(s));
-	return ;
+	write(1, &c, 1);
 }

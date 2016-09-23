@@ -1,23 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putstr.c                                        :+:      :+:    :+:   */
+/*   ft_strncmp.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lmeyer <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/07/11 09:58:27 by lmeyer            #+#    #+#             */
-/*   Updated: 2016/07/13 23:48:48 by lmeyer           ###   ########.fr       */
+/*   Created: 2016/07/12 18:56:32 by lmeyer            #+#    #+#             */
+/*   Updated: 2016/07/12 19:13:00 by lmeyer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
-
-int		ft_strlen(char *s);
-
-void	ft_putstr(char *str)
+int		ft_strncmp(char *s1, char *s2, unsigned int n)
 {
-	if (str == 0)
-		return ;
-	write(1, s, ft_strlen(s));
-	return ;
+	unsigned int i;
+
+	i = 0;
+	while (i < n - 1 && s1[i] == s2[i])
+	{
+		if (s1[i] == '\0')
+			return (0);
+		i++;
+	}
+	return (s1[i] - s2[i]);
 }
